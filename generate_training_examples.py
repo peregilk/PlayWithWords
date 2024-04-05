@@ -1,12 +1,11 @@
-#!/usr/bin/env python3
-import argparse
-import jsonlines
 import sys
 import json
+import argparse
+import jsonlines
 
 def execute_transformation(code: str, corpus_paragraph: str) -> str:
     # Execute the transformation code to generate ModifiedText
-    local_vars = {'CorpusParagraph': corpus_paragraph}
+    local_vars = {'InputText': corpus_paragraph}
     try:
         exec(code, globals(), local_vars)
         modified_text = local_vars.get('ModifiedText')
@@ -21,41 +20,49 @@ def generate_training_samples(text: str, json_lines_file_path: str, output_file_
     # Conditional opening of the verified jsonlines file before the 'with' statement
     verified_writer = None
     if verified_json_lines_file_path:
-        verified_writer = jsonlines.open(verified_json_lines_file_path, mode='w')
+        verified_writer = open(verified_json_lines_file_path, mode='w')
 
-    with jsonlines.open(json_lines_file_path, mode='r') as reader, open(output_file_path, 'w', encoding='utf-8') as output_file:
-        for line in reader.iter(type=dict, skip_invalid=True):
-            try:
-                # Generate the ModifiedText based on the source text and the task's code
-                modified_text = execute_transformation(line['code'], text)
+    with open(output_file_path, 'w', encoding='utf-8') as output_file:
+        with open(json_lines_file_path, 'r') as file:
+            for line_number, line in enumerate(file, start=1):
+                try:
+                    json_line = json.loads(line)
+                    try:
+                        # Generate the ModifiedText based on the source text and the task's code
+                        modified_text = execute_transformation(json_line['code'], text)
 
-                # Fill in the template with either the original text or the modified text
-                instruction = line['instruction'].replace("{CorpusParagraph}", text).replace("{ModifiedText}", modified_text)
+                        # Fill in the template with either the original text or the modified text
+                        instruction = json_line['instruction'].replace("{InputText}", text).replace("{ModifiedText}", modified_text)
 
-                # Determine the appropriate output for the training sample based on the task definition
-                output = line['target'].replace("{CorpusParagraph}", text).replace("{ModifiedText}", modified_text)
+                        # Determine the appropriate output for the training sample based on the task definition
+                        output = json_line['target'].replace("{InputText}", text).replace("{ModifiedText}", modified_text)
 
-                training_sample = {
-                    "instruction": instruction,
-                    "output": output
-                }
+                        training_sample = {
+                            "instruction": instruction,
+                            "output": output
+                        }
 
-                # Write the training sample to the output file
-                output_file.write(json.dumps(training_sample) + '\n')
+                        # Write the training sample to the output file
+                        output_file.write(json.dumps(training_sample) + '\n')
 
-                # If verified_json_lines_file_path is provided, write the line to the verified JSON-lines file
-                if verified_writer is not None:
-                    verified_writer.write(line)
+                        # If verified_json_lines_file_path is provided, write the line to the verified JSON-lines file
+                        if verified_writer is not None:
+                            verified_writer.write(json.dumps(json_line) + '\n')
 
-                # Print the instruction and output to the console for verification
-                print(f"Instruction: {instruction} Output: {output}")
-            except Exception as e:
-                # Print any error messages encountered during the transformation or file operations
-                print(f"Error processing transformation: {e}")
+                        # Print the instruction and output to the console for verification
+                        print(f"Instruction: {instruction}\nOutput: {output}\n")
+                    except Exception as e:
+                        # Print any error messages encountered during the transformation or file operations
+                        print(f"Error processing transformation on line {line_number}: {e}")
+                except json.JSONDecodeError as e:
+                    # Print the error message for the invalid JSON line and continue execution
+                    print(f"Error processing JSON line {line_number}: {e}")
 
     # Properly close the verified_writer if it was opened
     if verified_writer is not None:
         verified_writer.close()
+
+
 
 def main():
     parser = argparse.ArgumentParser(description="Generate instruction tuning training examples.")
@@ -70,4 +77,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
