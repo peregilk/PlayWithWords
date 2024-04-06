@@ -1,179 +1,151 @@
+[View extended tasks](./tasks_extended.md)
+
 ## Artificial Languages
 
-| instruction                                                                                                 | code                                                                                                          | target         |
-|:------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:---------------|
-| Please convert this text to leetspeak: "{InputText}"                                                        | ModifiedText = InputText.translate(str.maketrans('AEIOUaeiou', '4310543105'))                                 | {ModifiedText} |
-| Please convert this text to pig latin: "{InputText}"                                                        | ModifiedText = ' '.join([word[1:]+word[0]+'ay' if word[0].isalpha() else word for word in InputText.split()]) | {ModifiedText} |
-| Please convert this text to shorthand (replace 'you' with 'u', 'are' with 'r', etc.): "{InputText}"         | ModifiedText = InputText.replace('you', 'u').replace('are', 'r').replace('to', '2').replace('for', '4')       | {ModifiedText} |
-| Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}" | ModifiedText = ' '.join(w + 'ay' for w in InputText.split())                                                  | {ModifiedText} |
+| instruction                                                                                                 | target         |
+|:------------------------------------------------------------------------------------------------------------|:---------------|
+| Please convert this text to leetspeak: "{InputText}"                                                        | {ModifiedText} |
+| Please convert this text to pig latin: "{InputText}"                                                        | {ModifiedText} |
+| Please convert this text to shorthand (replace 'you' with 'u', 'are' with 'r', etc.): "{InputText}"         | {ModifiedText} |
+| Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}" | {ModifiedText} |
 
 ## Character Replacement
 
-| instruction                                                                                             | code                                                                                            | target         |
-|:--------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|:---------------|
-| Please remove all punctuation from the following text: "{InputText}"                                    | import string                                                                                   | {ModifiedText} |
-|                                                                                                         | ModifiedText = InputText.translate(str.maketrans('', '', string.punctuation))                   |                |
-| Please remove all punctuation from the following text: "{InputText}"                                    | import string                                                                                   | {ModifiedText} |
-|                                                                                                         | ModifiedText = InputText.translate(str.maketrans('', '', string.punctuation))                   |                |
-| Please remove all spaces in this text: "{InputText}"                                                    | ModifiedText = InputText.replace(' ', '')                                                       | {ModifiedText} |
-| Please replace all instances of the letter 'e' in the following text with the number '3': "{InputText}" | ModifiedText = InputText.replace('e', '3').replace('E', '3')                                    | {ModifiedText} |
-| Please replace all consonants in the following text with asterisks (*): "{InputText}"                   | import re                                                                                       | {ModifiedText} |
-|                                                                                                         | ModifiedText = re.sub(r'[bcdfghjklmnpqrstvwxyz]', '*', InputText, flags=re.IGNORECASE)          |                |
-| Please replace all punctuation with spaces in this text: "{InputText}"                                  | import string                                                                                   | {ModifiedText} |
-|                                                                                                         | ModifiedText = InputText.translate(str.maketrans('', '', string.punctuation)).replace(' ', ' ') |                |
-| Please replace all spaces in the following text with underscores: "{InputText}"                         | ModifiedText = InputText.replace(' ', '_')                                                      | {ModifiedText} |
-| Please replace all spaces in the following text with underscores: "{InputText}"                         | ModifiedText = InputText.replace(' ', '_')                                                      | {ModifiedText} |
-| Please replace all vowels in the following text with asterisks (*): "{InputText}"                       | import re                                                                                       | {ModifiedText} |
-|                                                                                                         | ModifiedText = re.sub(r'[aeiou]', '*', InputText, flags=re.IGNORECASE)                          |                |
+| instruction                                                                                             | target         |
+|:--------------------------------------------------------------------------------------------------------|:---------------|
+| Please remove all punctuation from the following text: "{InputText}"                                    | {ModifiedText} |
+| Please remove all punctuation from the following text: "{InputText}"                                    | {ModifiedText} |
+| Please remove all spaces in this text: "{InputText}"                                                    | {ModifiedText} |
+| Please replace all instances of the letter 'e' in the following text with the number '3': "{InputText}" | {ModifiedText} |
+| Please replace all consonants in the following text with asterisks (*): "{InputText}"                   | {ModifiedText} |
+| Please replace all punctuation with spaces in this text: "{InputText}"                                  | {ModifiedText} |
+| Please replace all spaces in the following text with underscores: "{InputText}"                         | {ModifiedText} |
+| Please replace all spaces in the following text with underscores: "{InputText}"                         | {ModifiedText} |
+| Please replace all vowels in the following text with asterisks (*): "{InputText}"                       | {ModifiedText} |
 
 ## Character Shuffling
 
-| instruction                                                                                                                             | code                                                                                                     | target         |
-|:----------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------|:---------------|
-| Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                    | ModifiedText = ''.join(word[-1] for word in InputText.split())[::-1]                                     | {ModifiedText} |
-| Please remove all but the middle character of each word, then reverse the order of the remaining characters in this text: "{InputText}" | ModifiedText = ''.join(word[len(word)//2] if len(word)%2==1 else '' for word in InputText.split())[::-1] | {ModifiedText} |
-| Please remove all spaces and reverse the order of characters in this text: "{InputText}"                                                | ModifiedText = InputText.replace(' ', '').strip()[::-1]                                                  | {ModifiedText} |
-| Please completely reverse the following text, including word and letter order: "{ModifiedText}"                                         | ModifiedText = InputText[::-1]                                                                           | {InputText}    |
-| Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | ModifiedText = ''.join(InputText.split()[::-1])                                                          | {ModifiedText} |
-| Please swap the case of all letters in the following text: "{InputText}"                                                                | ModifiedText = InputText.swapcase()                                                                      | {ModifiedText} |
-| Please swap the case of all letters in the following text: "{InputText}"                                                                | ModifiedText = InputText.swapcase()                                                                      | {ModifiedText} |
+| instruction                                                                                                                             | target         |
+|:----------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                    | {ModifiedText} |
+| Please remove all but the middle character of each word, then reverse the order of the remaining characters in this text: "{InputText}" | {ModifiedText} |
+| Please remove all spaces and reverse the order of characters in this text: "{InputText}"                                                | {ModifiedText} |
+| Please completely reverse the following text, including word and letter order: "{ModifiedText}"                                         | {InputText}    |
+| Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | {ModifiedText} |
+| Please swap the case of all letters in the following text: "{InputText}"                                                                | {ModifiedText} |
+| Please swap the case of all letters in the following text: "{InputText}"                                                                | {ModifiedText} |
 
 ## Sentence Manipulation
 
-| instruction                                                                                                                                   | code                                                                                                                                              | target         |
-|:----------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
-| Please remove all but the first and last word from this text: "{InputText}"                                                                   | words = InputText.split()                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = words[0] + ' ' + words[-1]                                                                                                         |                |
-| Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: "{InputText}" | sentences = [sentence.split() for sentence in InputText.split('. ')]                                                                              | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(sentence[0]+sentence[-1] for sentence in sentences[::-1])                                                                 |                |
-| Please remove the first and last word from each sentence in this text: "{InputText}"                                                          | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(' '.join(s.split()[1:-1]) for s in re.split(r'(?<=[.!?]) +', InputText))                                                  |                |
-| Please remove the second and second-to-last word from each sentence in this text: "{InputText}"                                               | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(' '.join(s.split()[0:1] + s.split()[2:-2] + s.split()[-1:]) for s in re.split(r'(?<=[.!?]) +', InputText))                |                |
-| Please remove all sentences with 3 words or fewer and 10 words or more from the following text: "{InputText}"                                 | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | sentences = re.split(r'(?<=[.!?]) +', InputText)                                                                                                  |                |
-|                                                                                                                                               | ModifiedText = ' '.join(s for s in sentences if 3 < len(s.split()) < 10)                                                                          |                |
-| Please reverse the order of characters in each sentence of the following text, while keeping the original sentence order: "{InputText}"       | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(s[::-1] for s in re.split(r'(?<=[.!?]) +', InputText))                                                                    |                |
-| Please reverse the order of sentences in the following text: "{InputText}"                                                                    | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(re.split(r'(?<=[.!?]) +', InputText)[::-1])                                                                               |                |
-| Please reverse the order of sentences in the following text: "{InputText}"                                                                    | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(re.split(r'(?<=[.!?]) +', InputText)[::-1])                                                                               |                |
-| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(' '.join(s.split()[::-1]) for s in re.split(r'(?<=[.!?]) +', InputText))                                                  |                |
-| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(' '.join(s.split()[::-1]) for s in re.split(r'(?<=[.!?]) +', InputText))                                                  |                |
-| Please reverse the word order in every other sentence of the following text, starting with the first sentence: "{InputText}"                  | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(' '.join(s.split()[::-1]) if i%2==0 else ' '.join(s.split()) for i, s in enumerate(re.split(r'(?<=[.!?]) +', InputText))) |                |
-| Please reverse the word order in the first and last sentence of the following text: "{InputText}"                                             | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | sentences = re.split(r'(?<=[.!?]) +', InputText)                                                                                                  |                |
-|                                                                                                                                               | sentences[0] = ' '.join(sentences[0].split()[::-1])                                                                                               |                |
-|                                                                                                                                               | sentences[-1] = ' '.join(sentences[-1].split()[::-1])                                                                                             |                |
-|                                                                                                                                               | ModifiedText = ' '.join(sentences)                                                                                                                |                |
-| Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                                  | import re                                                                                                                                         | {ModifiedText} |
-|                                                                                                                                               | ModifiedText = ' '.join(sorted(re.split(r'(?<=[.!?]) +', InputText), key=len))                                                                    |                |
+| instruction                                                                                                                                   | target         |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please remove all but the first and last word from this text: "{InputText}"                                                                   | {ModifiedText} |
+| Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: "{InputText}" | {ModifiedText} |
+| Please remove the first and last word from each sentence in this text: "{InputText}"                                                          | {ModifiedText} |
+| Please remove the second and second-to-last word from each sentence in this text: "{InputText}"                                               | {ModifiedText} |
+| Please remove all sentences with 3 words or fewer and 10 words or more from the following text: "{InputText}"                                 | {ModifiedText} |
+| Please reverse the order of characters in each sentence of the following text, while keeping the original sentence order: "{InputText}"       | {ModifiedText} |
+| Please reverse the order of sentences in the following text: "{InputText}"                                                                    | {ModifiedText} |
+| Please reverse the order of sentences in the following text: "{InputText}"                                                                    | {ModifiedText} |
+| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                | {ModifiedText} |
+| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                | {ModifiedText} |
+| Please reverse the word order in every other sentence of the following text, starting with the first sentence: "{InputText}"                  | {ModifiedText} |
+| Please reverse the word order in the first and last sentence of the following text: "{InputText}"                                             | {ModifiedText} |
+| Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                                  | {ModifiedText} |
 
 ## Text Analysis
 
-| instruction                                                                         | code                                                                                                 | target         |
-|:------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------|:---------------|
-| Please count the number of words in this text: "{InputText}"                        | ModifiedText = str(len(InputText.split()))                                                           | {ModifiedText} |
-| Please remove all but the first letter of each word in this text: "{InputText}"     | ModifiedText = ' '.join(word[0] for word in InputText.split())                                       | {ModifiedText} |
-| Please remove all but the last letter of each word in this text: "{InputText}"      | ModifiedText = ' '.join(word[-1] for word in InputText.split())                                      | {ModifiedText} |
-| Please remove all but the middle letter of each word in this text: "{InputText}"    | ModifiedText = ' '.join(word[len(word)//2] if len(word)%2==1 else '' for word in InputText.split())  | {ModifiedText} |
-| Please replace each word with its first and last letter in this text: "{InputText}" | ModifiedText = ' '.join(word[0] + word[-1] if len(word) > 1 else word for word in InputText.split()) | {ModifiedText} |
-| Please replace each word with its first letter in this text: "{InputText}"          | ModifiedText = ' '.join(word[0] for word in InputText.split())                                       | {ModifiedText} |
-| Please replace each word with its first two letters in this text: "{InputText}"     | ModifiedText = ' '.join(word[:2] for word in InputText.split())                                      | {ModifiedText} |
-| Please replace each word with its index in the sentence in this text: "{InputText}" | ModifiedText = ' '.join(str(i) for i in range(len(InputText.split())))                               | {ModifiedText} |
-| Please replace each word with its last two letters in this text: "{InputText}"      | ModifiedText = ' '.join(word[-2:] for word in InputText.split())                                     | {ModifiedText} |
-| Please replace each word with its length in this text: "{InputText}"                | ModifiedText = ' '.join(str(len(word)) for word in InputText.split())                                | {ModifiedText} |
-| Please replace each word with its length in binary in this text: "{InputText}"      | ModifiedText = ' '.join(bin(len(word))[2:] for word in InputText.split())                            | {ModifiedText} |
-| Please replace each word with its second letter in this text: "{InputText}"         | ModifiedText = ' '.join(word[1] if len(word) > 1 else '' for word in InputText.split())              | {ModifiedText} |
+| instruction                                                                         | target         |
+|:------------------------------------------------------------------------------------|:---------------|
+| Please count the number of words in this text: "{InputText}"                        | {ModifiedText} |
+| Please remove all but the first letter of each word in this text: "{InputText}"     | {ModifiedText} |
+| Please remove all but the last letter of each word in this text: "{InputText}"      | {ModifiedText} |
+| Please remove all but the middle letter of each word in this text: "{InputText}"    | {ModifiedText} |
+| Please replace each word with its first and last letter in this text: "{InputText}" | {ModifiedText} |
+| Please replace each word with its first letter in this text: "{InputText}"          | {ModifiedText} |
+| Please replace each word with its first two letters in this text: "{InputText}"     | {ModifiedText} |
+| Please replace each word with its index in the sentence in this text: "{InputText}" | {ModifiedText} |
+| Please replace each word with its last two letters in this text: "{InputText}"      | {ModifiedText} |
+| Please replace each word with its length in this text: "{InputText}"                | {ModifiedText} |
+| Please replace each word with its length in binary in this text: "{InputText}"      | {ModifiedText} |
+| Please replace each word with its second letter in this text: "{InputText}"         | {ModifiedText} |
 
 ## Text Encoding
 
-| instruction                                                                                    | code                                                                 | target         |
-|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:---------------|
-| Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"            | import string                                                        | {ModifiedText} |
-|                                                                                                | shift = 5                                                            |                |
-|                                                                                                | alphabet = string.ascii_lowercase                                    |                |
-|                                                                                                | shifted_alphabet = alphabet[shift:] + alphabet[:shift]               |                |
-|                                                                                                | table = str.maketrans(alphabet, shifted_alphabet)                    |                |
-|                                                                                                | ModifiedText = InputText.translate(table)                            |                |
-| Please convert the following text to binary, with spaces between each byte: "{InputText}"      | ModifiedText = ' '.join(format(ord(c), '08b') for c in InputText)    | {ModifiedText} |
-| Please convert the following text to hexadecimal, with spaces between each byte: "{InputText}" | ModifiedText = ' '.join(hex(ord(c))[2:].zfill(2) for c in InputText) | {ModifiedText} |
+| instruction                                                                                    | target         |
+|:-----------------------------------------------------------------------------------------------|:---------------|
+| Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"            | {ModifiedText} |
+| Please convert the following text to binary, with spaces between each byte: "{InputText}"      | {ModifiedText} |
+| Please convert the following text to hexadecimal, with spaces between each byte: "{InputText}" | {ModifiedText} |
 
 ## Text Extraction
 
-| instruction                                                          | code                                                                                           | target         |
-|:---------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|:---------------|
-| Please extract all consonants from the following text: "{InputText}" | import re                                                                                      | {ModifiedText} |
-|                                                                      | ModifiedText = ''.join(re.findall(r'[bcdfghjklmnpqrstvwxyz]', InputText, flags=re.IGNORECASE)) |                |
-| Please extract all vowels from the following text: "{InputText}"     | import re                                                                                      | {ModifiedText} |
-|                                                                      | ModifiedText = ''.join(re.findall(r'[aeiou]', InputText, flags=re.IGNORECASE))                 |                |
+| instruction                                                          | target         |
+|:---------------------------------------------------------------------|:---------------|
+| Please extract all consonants from the following text: "{InputText}" | {ModifiedText} |
+| Please extract all vowels from the following text: "{InputText}"     | {ModifiedText} |
 
 ## Text Formatting
 
-| instruction                                                                                                                 | code                                                                                             | target         |
-|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|:---------------|
-| Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}" | ModifiedText = ''.join(w[0].upper() for w in InputText.split())                                  | {ModifiedText} |
-| Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}" | ModifiedText = ''.join(w[0].upper() for w in InputText.split())                                  | {ModifiedText} |
-| Please add a serial number in parentheses before each word in this text: "{InputText}"                                      | ModifiedText = ' '.join(f'({i+1}) {w}' for i,w in enumerate(InputText.split()))                  | {ModifiedText} |
-| Please add a serial number in parentheses before each word in this text: "{InputText}"                                      | ModifiedText = ' '.join(f'({i+1}) {w}' for i,w in enumerate(InputText.split()))                  | {ModifiedText} |
-| Please add a number in parentheses after each word in this text indicating its position: "{InputText}"                      | ModifiedText = ' '.join(f'{w} ({i+1})' for i,w in enumerate(InputText.split()))                  | {ModifiedText} |
-| Please capitalize all words in this text: "{InputText}"                                                                     | ModifiedText = InputText.title()                                                                 | {ModifiedText} |
-| Please capitalize every fifth word in this text, starting with the first word: "{InputText}"                                | ModifiedText = ' '.join(w.capitalize() if i%5==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
-| Please capitalize every fourth word in this text, starting with the first word: "{InputText}"                               | ModifiedText = ' '.join(w.capitalize() if i%4==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
-| Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | ModifiedText = ' '.join(w.capitalize() if i%2==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
-| Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | ModifiedText = ' '.join(w.capitalize() if i%2==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
-| Please capitalize every third word in this text, starting with the first word: "{InputText}"                                | ModifiedText = ' '.join(w.capitalize() if i%3==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
-| Please convert this text to camel case: "{InputText}"                                                                       | ModifiedText = InputText.title().replace(' ', '')                                                | {ModifiedText} |
-| Please convert this text to initials (first letter of each word): "{InputText}"                                             | ModifiedText = ' '.join(word[0] for word in InputText.split())                                   | {ModifiedText} |
-| Please convert this text to sentence case (only the first word and proper nouns capitalized): "{InputText}"                 | ModifiedText = InputText[0].upper() + InputText[1:].lower()                                      | {ModifiedText} |
-| Please convert this text to uppercase: "{InputText}"                                                                        | ModifiedText = InputText.upper()                                                                 | {ModifiedText} |
-| Please replace each word with its abbreviation in this text: "{InputText}"                                                  | ModifiedText = ' '.join(word[0]+'.' for word in InputText.split())                               | {ModifiedText} |
-| Please replace each word with its capitalized counterpart in this text: "{InputText}"                                       | ModifiedText = ' '.join(word.capitalize() for word in InputText.split())                         | {ModifiedText} |
+| instruction                                                                                                                 | target         |
+|:----------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}" | {ModifiedText} |
+| Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}" | {ModifiedText} |
+| Please add a serial number in parentheses before each word in this text: "{InputText}"                                      | {ModifiedText} |
+| Please add a serial number in parentheses before each word in this text: "{InputText}"                                      | {ModifiedText} |
+| Please add a number in parentheses after each word in this text indicating its position: "{InputText}"                      | {ModifiedText} |
+| Please capitalize all words in this text: "{InputText}"                                                                     | {ModifiedText} |
+| Please capitalize every fifth word in this text, starting with the first word: "{InputText}"                                | {ModifiedText} |
+| Please capitalize every fourth word in this text, starting with the first word: "{InputText}"                               | {ModifiedText} |
+| Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | {ModifiedText} |
+| Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | {ModifiedText} |
+| Please capitalize every third word in this text, starting with the first word: "{InputText}"                                | {ModifiedText} |
+| Please convert this text to camel case: "{InputText}"                                                                       | {ModifiedText} |
+| Please convert this text to initials (first letter of each word): "{InputText}"                                             | {ModifiedText} |
+| Please convert this text to sentence case (only the first word and proper nouns capitalized): "{InputText}"                 | {ModifiedText} |
+| Please convert this text to uppercase: "{InputText}"                                                                        | {ModifiedText} |
+| Please replace each word with its abbreviation in this text: "{InputText}"                                                  | {ModifiedText} |
+| Please replace each word with its capitalized counterpart in this text: "{InputText}"                                       | {ModifiedText} |
 
 ## Word Manipulation
 
-| instruction                                                                                                                                           | code                                                                                                         | target         |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------|:---------------|
-| Please double each word in the following text: "{InputText}"                                                                                          | ModifiedText = ' '.join(w+w for w in InputText.split())                                                      | {ModifiedText} |
-| Please create portmanteau words from the following text by combining the first half of each word with the second half of the next word: "{InputText}" | words = InputText.split()                                                                                    | {ModifiedText} |
-|                                                                                                                                                       | ModifiedText = ' '.join(w1[:len(w1)//2] + w2[len(w2)//2:] for w1, w2 in zip(words[:-1], words[1:]))          |                |
-| Please remove all but the first and last character of each word in this text: "{InputText}"                                                           | ModifiedText = ' '.join(word[0]+word[-1] if len(word)>1 else word for word in InputText.split())             | {ModifiedText} |
-| Please remove all but the first and last letter of each word, then reverse the order of the remaining words in this text: "{InputText}"               | ModifiedText = ' '.join(word[0]+word[-1] if len(word)>1 else word for word in InputText.split())[::-1]       | {ModifiedText} |
-| Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                                  | ModifiedText = ' '.join(word[0] for word in InputText.split())[::-1]                                         | {ModifiedText} |
-| Please remove all but the first two and last two characters of each word in this text: "{InputText}"                                                  | ModifiedText = ' '.join(word[:2]+word[-2:] if len(word)>=4 else word for word in InputText.split())          | {ModifiedText} |
-| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | ModifiedText = ' '.join(dict.fromkeys(InputText.split()))                                                    | {ModifiedText} |
-| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | ModifiedText = ' '.join(dict.fromkeys(InputText.split()))                                                    | {ModifiedText} |
-| Please remove duplicate words from this text: "{InputText}"                                                                                           | ModifiedText = ' '.join(set(InputText.split()))                                                              | {ModifiedText} |
-| Please remove every other word from the following text, starting with the second word: "{InputText}"                                                  | ModifiedText = ' '.join(w for i, w in enumerate(InputText.split()) if i % 2 == 0)                            | {ModifiedText} |
-| Please remove every other word from the following text, starting with the second word: "{InputText}"                                                  | ModifiedText = ' '.join(w for i, w in enumerate(InputText.split()) if i % 2 == 0)                            | {ModifiedText} |
-| Please remove every second and third word from the following text, starting with the second word: "{InputText}"                                       | ModifiedText = ' '.join(w for i, w in enumerate(InputText.split()) if i % 3 == 0)                            | {ModifiedText} |
-| Please remove the last letter from each word in this text: "{InputText}"                                                                              | ModifiedText = ' '.join(word[:-1] for word in InputText.split())                                             | {ModifiedText} |
-| Please remove all words with 7 letters or more from the following text: "{InputText}"                                                                 | ModifiedText = ' '.join(w for w in InputText.split() if len(w) < 7)                                          | {ModifiedText} |
-| Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}"                                          | ModifiedText = ' '.join(w for w in InputText.split() if 3 < len(w) < 7)                                      | {ModifiedText} |
-| Please remove all words with 3 letters or fewer from the following text: "{InputText}"                                                                | ModifiedText = ' '.join(w for w in InputText.split() if len(w) > 3)                                          | {ModifiedText} |
-| Please remove all words with 3 letters or fewer from the following text: "{InputText}"                                                                | ModifiedText = ' '.join(w for w in InputText.split() if len(w) > 3)                                          | {ModifiedText} |
-| Please remove all words containing 'a' from this text: "{InputText}"                                                                                  | ModifiedText = ' '.join(word for word in InputText.split() if 'a' not in word)                               | {ModifiedText} |
-| Please remove all words with odd length from this text: "{InputText}"                                                                                 | ModifiedText = ' '.join(word for word in InputText.split() if len(word) % 2 == 0)                            | {ModifiedText} |
-| Please replace each word in this text with its length, then reverse the resulting string: "{InputText}"                                               | ModifiedText = ''.join(str(len(word)) for word in InputText.split())[::-1]                                   | {ModifiedText} |
-| Please replace each word with its palindrome in this text: "{InputText}"                                                                              | ModifiedText = ' '.join(word if word == word[::-1] else word + word[::-1][1:] for word in InputText.split()) | {ModifiedText} |
-| Please replace each word with its repeated character in this text: "{InputText}"                                                                      | ModifiedText = ' '.join(word[0]*len(word) for word in InputText.split())                                     | {ModifiedText} |
-| Please replace each word with its reversed counterpart in this text: "{InputText}"                                                                    | ModifiedText = ' '.join(word[::-1] for word in InputText.split())                                            | {ModifiedText} |
-| Please reverse the character order in every fifth word of the following text, starting with the first word: "{InputText}"                             | ModifiedText = ' '.join(w[::-1] if i%5==0 else w for i,w in enumerate(InputText.split()))                    | {ModifiedText} |
-| Please reverse the character order in every third word of the following text, starting with the first word: "{InputText}"                             | ModifiedText = ' '.join(w[::-1] if i%3==0 else w for i,w in enumerate(InputText.split()))                    | {ModifiedText} |
-| Please reverse each individual word in this text while keeping the original word order: "{InputText}"                                                 | ModifiedText = ' '.join(w[::-1] for w in InputText.split())                                                  | {ModifiedText} |
-| Please reverse each individual word in this text while keeping the original word order: "{InputText}"                                                 | ModifiedText = ' '.join(w[::-1] for w in InputText.split())                                                  | {ModifiedText} |
-| Please reverse each word in this text: "{InputText}"                                                                                                  | ModifiedText = ' '.join(word[::-1] for word in InputText.split())                                            | {ModifiedText} |
-| Please reverse every fourth word in this text, starting with the first word: "{InputText}"                                                            | ModifiedText = ' '.join(w[::-1] if i%4==0 else w for i,w in enumerate(InputText.split()))                    | {ModifiedText} |
-| Please reverse every other word in this text, starting with the first word: "{InputText}"                                                             | ModifiedText = ' '.join(w[::-1] if i%2==0 else w for i,w in enumerate(InputText.split()))                    | {ModifiedText} |
-| Please reverse every other word in this text: "{InputText}"                                                                                           | ModifiedText = ' '.join(word[::-1] if i%2 else word for i, word in enumerate(InputText.split()))             | {ModifiedText} |
-| Please reverse every third word in this text, starting with the first word: "{InputText}"                                                             | ModifiedText = ' '.join(w[::-1] if i%3==0 else w for i,w in enumerate(InputText.split()))                    | {ModifiedText} |
-| Please reverse the doubled words in the following text to get the original: "{ModifiedText}"                                                          | ModifiedText = ' '.join(w[:len(w)//2] for w in InputText.split())                                            | {InputText}    |
-| Please sort all the words in the following text alphabetically: "{InputText}"                                                                         | ModifiedText = ' '.join(sorted(InputText.split()))                                                           | {ModifiedText} |
-| Please sort all the words in the following text alphabetically: "{InputText}"                                                                         | ModifiedText = ' '.join(sorted(InputText.split()))                                                           | {ModifiedText} |
-| Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"                                              | ModifiedText = ' '.join(sorted(InputText.split(), key=len))                                                  | {ModifiedText} |
-| Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}"                                          | ModifiedText = ' '.join(sorted(InputText.split(), key=lambda w: sum(c in 'aeiou' for c in w)))               | {ModifiedText} |
+| instruction                                                                                                                                           | target         |
+|:------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please double each word in the following text: "{InputText}"                                                                                          | {ModifiedText} |
+| Please create portmanteau words from the following text by combining the first half of each word with the second half of the next word: "{InputText}" | {ModifiedText} |
+| Please remove all but the first and last character of each word in this text: "{InputText}"                                                           | {ModifiedText} |
+| Please remove all but the first and last letter of each word, then reverse the order of the remaining words in this text: "{InputText}"               | {ModifiedText} |
+| Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                                  | {ModifiedText} |
+| Please remove all but the first two and last two characters of each word in this text: "{InputText}"                                                  | {ModifiedText} |
+| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | {ModifiedText} |
+| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | {ModifiedText} |
+| Please remove duplicate words from this text: "{InputText}"                                                                                           | {ModifiedText} |
+| Please remove every other word from the following text, starting with the second word: "{InputText}"                                                  | {ModifiedText} |
+| Please remove every other word from the following text, starting with the second word: "{InputText}"                                                  | {ModifiedText} |
+| Please remove every second and third word from the following text, starting with the second word: "{InputText}"                                       | {ModifiedText} |
+| Please remove the last letter from each word in this text: "{InputText}"                                                                              | {ModifiedText} |
+| Please remove all words with 7 letters or more from the following text: "{InputText}"                                                                 | {ModifiedText} |
+| Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}"                                          | {ModifiedText} |
+| Please remove all words with 3 letters or fewer from the following text: "{InputText}"                                                                | {ModifiedText} |
+| Please remove all words with 3 letters or fewer from the following text: "{InputText}"                                                                | {ModifiedText} |
+| Please remove all words containing 'a' from this text: "{InputText}"                                                                                  | {ModifiedText} |
+| Please remove all words with odd length from this text: "{InputText}"                                                                                 | {ModifiedText} |
+| Please replace each word in this text with its length, then reverse the resulting string: "{InputText}"                                               | {ModifiedText} |
+| Please replace each word with its palindrome in this text: "{InputText}"                                                                              | {ModifiedText} |
+| Please replace each word with its repeated character in this text: "{InputText}"                                                                      | {ModifiedText} |
+| Please replace each word with its reversed counterpart in this text: "{InputText}"                                                                    | {ModifiedText} |
+| Please reverse the character order in every fifth word of the following text, starting with the first word: "{InputText}"                             | {ModifiedText} |
+| Please reverse the character order in every third word of the following text, starting with the first word: "{InputText}"                             | {ModifiedText} |
+| Please reverse each individual word in this text while keeping the original word order: "{InputText}"                                                 | {ModifiedText} |
+| Please reverse each individual word in this text while keeping the original word order: "{InputText}"                                                 | {ModifiedText} |
+| Please reverse each word in this text: "{InputText}"                                                                                                  | {ModifiedText} |
+| Please reverse every fourth word in this text, starting with the first word: "{InputText}"                                                            | {ModifiedText} |
+| Please reverse every other word in this text, starting with the first word: "{InputText}"                                                             | {ModifiedText} |
+| Please reverse every other word in this text: "{InputText}"                                                                                           | {ModifiedText} |
+| Please reverse every third word in this text, starting with the first word: "{InputText}"                                                             | {ModifiedText} |
+| Please reverse the doubled words in the following text to get the original: "{ModifiedText}"                                                          | {InputText}    |
+| Please sort all the words in the following text alphabetically: "{InputText}"                                                                         | {ModifiedText} |
+| Please sort all the words in the following text alphabetically: "{InputText}"                                                                         | {ModifiedText} |
+| Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"                                              | {ModifiedText} |
+| Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}"                                          | {ModifiedText} |
 
