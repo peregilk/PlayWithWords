@@ -28,7 +28,6 @@
 {"instruction": "Please replace all vowels in the following text with asterisks (*): \"This is just a test. A test...\"", "output": "Th*s *s j*st * t*st. * t*st..."}
 {"instruction": "Please capitalize every third word in this text, starting with the first word: \"This is just a test. A test...\"", "output": "This is just A test. A Test..."}
 {"instruction": "Please reverse every other word in this text, starting with the first word: \"This is just a test. A test...\"", "output": "sihT is tsuj a .tset A ...tset"}
-{"instruction": "Please remove the middle word from each sentence in this text: \"This is just a test. A test...\"", "output": "This is a test. A"}
 {"instruction": "Please sort all the words in the following text by their length, from shortest to longest: \"This is just a test. A test...\"", "output": "a A is This just test. test..."}
 {"instruction": "Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): \"This is just a test. A test...\"", "output": "Thisay isay justay aay test.ay Aay test...ay"}
 {"instruction": "Please extract all consonants from the following text: \"This is just a test. A test...\"", "output": "Thssjsttsttst"}
@@ -67,7 +66,7 @@
 {"instruction": "Please reverse each word in this text: \"This is just a test. A test...\"", "output": "sihT si tsuj a .tset A ...tset"}
 {"instruction": "Please convert this text to leetspeak: \"This is just a test. A test...\"", "output": "Th1s 1s j5st 4 t3st. 4 t3st..."}
 {"instruction": "Please convert this text to uppercase: \"This is just a test. A test...\"", "output": "THIS IS JUST A TEST. A TEST..."}
-{"instruction": "Please remove duplicate words from this text: \"This is just a test. A test...\"", "output": "This a is just A test... test."}
+{"instruction": "Please remove duplicate words from this text: \"This is just a test. A test...\"", "output": "is a A This test... just test."}
 {"instruction": "Please count the number of words in this text: \"This is just a test. A test...\"", "output": "7"}
 {"instruction": "Please replace each word with its first letter in this text: \"This is just a test. A test...\"", "output": "T i j a t A t"}
 {"instruction": "Please remove the last letter from each word in this text: \"This is just a test. A test...\"", "output": "Thi i jus  test  test.."}
@@ -95,3 +94,11 @@
 {"instruction": "Please remove all but the first and last character of each word in this text: \"This is just a test. A test...\"", "output": "Ts is jt a t. A t."}
 {"instruction": "Please replace each word with its abbreviation in this text: \"This is just a test. A test...\"", "output": "T. i. j. a. t. A. t."}
 {"instruction": "Please replace each word with its repeated character in this text: \"This is just a test. A test...\"", "output": "TTTT ii jjjj a ttttt A ttttttt"}
+{"instruction": "Please remove all spaces and reverse the order of characters in this text: \"This is just a test. A test...\"", "output": "...tsetA.tsetatsujsisihT"}
+{"instruction": "Please reverse the order of words and remove all spaces in this text: \"This is just a test. A test...\"", "output": "test...Atest.ajustisThis"}
+{"instruction": "Please replace each word in this text with its length, then reverse the resulting string: \"This is just a test. A test...\"", "output": "7151424"}
+{"instruction": "Please remove all but the first letter of each word, then reverse the order of the words in this text: \"This is just a test. A test...\"", "output": "t A t a j i T"}
+{"instruction": "Please remove all but the last letter of each word, then reverse the resulting string: \"This is just a test. A test...\"", "output": ".A.atss"}
+{"instruction": "Please remove all but the middle character of each word, then reverse the order of the remaining characters in this text: \"This is just a test. A test...\"", "output": "tAsa"}
+{"instruction": "Please remove all but the first and last letter of each word, then reverse the order of the remaining words in this text: \"This is just a test. A test...\"", "output": ".t A .t a tj si sT"}
+{"instruction": "Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: \"This is just a test. A test...\"", "output": "Atest... Thistest"}
