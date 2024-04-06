@@ -115,9 +115,9 @@
 | Please remove all but the first and last letter of each word, then reverse the order of the remaining words in this text: "{InputText}"               | {ModifiedText} |
 | Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                                  | {ModifiedText} |
 | Please remove all but the first two and last two characters of each word in this text: "{InputText}"                                                  | {ModifiedText} |
+| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | {ModifiedText} |
+| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | {ModifiedText} |
 | Please remove duplicate words from this text: "{InputText}"                                                                                           | {ModifiedText} |
-| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | {ModifiedText} |
-| Please remove any duplicate words in this text, keeping only the first occurrence of each: "{InputText}"                                              | {ModifiedText} |
 | Please remove every other word from the following text, starting with the second word: "{InputText}"                                                  | {ModifiedText} |
 | Please remove every other word from the following text, starting with the second word: "{InputText}"                                                  | {ModifiedText} |
 | Please remove every second and third word from the following text, starting with the second word: "{InputText}"                                       | {ModifiedText} |
@@ -138,8 +138,8 @@
 | Please reverse each individual word in this text while keeping the original word order: "{InputText}"                                                 | {ModifiedText} |
 | Please reverse each word in this text: "{InputText}"                                                                                                  | {ModifiedText} |
 | Please reverse every fourth word in this text, starting with the first word: "{InputText}"                                                            | {ModifiedText} |
-| Please reverse every other word in this text: "{InputText}"                                                                                           | {ModifiedText} |
 | Please reverse every other word in this text, starting with the first word: "{InputText}"                                                             | {ModifiedText} |
+| Please reverse every other word in this text: "{InputText}"                                                                                           | {ModifiedText} |
 | Please reverse every third word in this text, starting with the first word: "{InputText}"                                                             | {ModifiedText} |
 | Please reverse the doubled words in the following text to get the original: "{ModifiedText}"                                                          | {InputText}    |
 | Please sort all the words in the following text alphabetically: "{InputText}"                                                                         | {ModifiedText} |

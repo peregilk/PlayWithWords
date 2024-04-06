@@ -1,17 +1,22 @@
 import pandas as pd
 import argparse
+import json
 
-def generate_markdown_tables(input_json_filename):
+def generate_markdown_tables(input_json_filename, sorted_json_lines_file=None):
     # Read JSON Lines file directly into a Pandas DataFrame
     df = pd.read_json(input_json_filename, lines=True)
 
-    # Adjusting to avoid potential future deprecation issues
-    # Group by 'task group', sort within each group by 'task', and reset index without the deprecation warning concern
-    grouped = df.groupby('task group', as_index=False, group_keys=False).apply(lambda x: x.sort_values('task')).reset_index(drop=True)
+    # Sort the DataFrame by 'task group' and then by 'task'
+    sorted_df = df.sort_values(by=['task group', 'task']).reset_index(drop=True)
+    
+    # Optionally save the sorted DataFrame back to a JSON Lines file
+    if sorted_json_lines_file:
+        sorted_df.to_json(sorted_json_lines_file, orient='records', lines=True)
+        print(f"Saved sorted JSON Lines to {sorted_json_lines_file}")
 
     # Generate Markdown tables for each group
     markdown_string = ""
-    for name, group in grouped.groupby('task group'):
+    for name, group in sorted_df.groupby('task group'):
         markdown_string += f"## {name}\n\n"
         markdown_string += group[['instruction', 'target']].to_markdown(index=False)
         markdown_string += "\n\n"
@@ -26,9 +31,10 @@ def save_markdown(markdown_string, output_filename='tasks.md'):
 def main():
     parser = argparse.ArgumentParser(description='Generate Markdown tables from JSON Lines tasks.')
     parser.add_argument('--input_json_filename', type=str, default='templates/sample.jsonl', help='Path to the input JSON Lines file.')
+    parser.add_argument('--sorted_json_lines_file', type=str, help='Path to save the sorted JSON Lines file.', default=None)
     
     args = parser.parse_args()
-    markdown_string = generate_markdown_tables(args.input_json_filename)
+    markdown_string = generate_markdown_tables(args.input_json_filename, args.sorted_json_lines_file)
     save_markdown(markdown_string)
 
 if __name__ == "__main__":
