@@ -30,7 +30,7 @@ def save_markdown(markdown_string, output_filename='tasks.md'):
 
 def main():
     parser = argparse.ArgumentParser(description='Generate Markdown tables from JSON Lines tasks.')
-    parser.add_argument('--input_json_filename', type=str, default='templates/sample.jsonl', help='Path to the input JSON Lines file.')
+    parser.add_argument('--input_json_filename', type=str, default='templates/samples.jsonl', help='Path to the input JSON Lines file.')
     parser.add_argument('--sorted_json_lines_file', type=str, help='Path to save the sorted JSON Lines file.', default=None)
     
     args = parser.parse_args()
