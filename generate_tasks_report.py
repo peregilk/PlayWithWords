@@ -1,10 +1,12 @@
 import pandas as pd
 import argparse
-import json
 
 def generate_markdown_tables(input_json_filename, sorted_json_lines_file=None):
     # Read JSON Lines file directly into a Pandas DataFrame
     df = pd.read_json(input_json_filename, lines=True)
+
+    # Ensure 'code' column is present and correctly referenced
+    assert 'code' in df.columns, "DataFrame does not contain a 'code' column."
 
     # Sort the DataFrame by 'task group' and then by 'task'
     sorted_df = df.sort_values(by=['task group', 'task']).reset_index(drop=True)
@@ -14,11 +16,11 @@ def generate_markdown_tables(input_json_filename, sorted_json_lines_file=None):
         sorted_df.to_json(sorted_json_lines_file, orient='records', lines=True)
         print(f"Saved sorted JSON Lines to {sorted_json_lines_file}")
 
-    # Generate Markdown tables for each group
+    # Generate Markdown tables for each group, including the "code" column
     markdown_string = ""
     for name, group in sorted_df.groupby('task group'):
         markdown_string += f"## {name}\n\n"
-        markdown_string += group[['instruction', 'target']].to_markdown(index=False)
+        markdown_string += group[['instruction', 'code', 'target']].to_markdown(index=False)
         markdown_string += "\n\n"
     
     return markdown_string

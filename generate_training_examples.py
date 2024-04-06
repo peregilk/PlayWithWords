@@ -1,42 +1,79 @@
-import pandas as pd
+import sys
+import json
 import argparse
+import jsonlines
 
-def generate_markdown_tables(input_json_filename, sorted_json_lines_file=None):
-    # Read JSON Lines file directly into a Pandas DataFrame
-    df = pd.read_json(input_json_filename, lines=True)
+def execute_transformation(code: str, corpus_paragraph: str) -> str:
+    # Execute the transformation code to generate ModifiedText
+    local_vars = {'InputText': corpus_paragraph}
+    try:
+        exec(code, globals(), local_vars)
+        modified_text = local_vars.get('ModifiedText')
+        if modified_text is None:
+            raise NameError("'ModifiedText' is not defined in the executed code.")
+        return modified_text
+    except Exception as e:
+        # Error handling for any issues during code execution
+        raise Exception(f"Error executing transformation code: {e}")
 
-    # Sort the DataFrame by 'task group' and then by 'task'
-    sorted_df = df.sort_values(by=['task group', 'task']).reset_index(drop=True)
-    
-    # Optionally save the sorted DataFrame back to a JSON Lines file
-    if sorted_json_lines_file:
-        sorted_df.to_json(sorted_json_lines_file, orient='records', lines=True)
-        print(f"Saved sorted JSON Lines to {sorted_json_lines_file}")
+def generate_training_samples(text: str, json_lines_file_path: str, output_file_path: str, verified_json_lines_file_path: str = None) -> None:
+    # Conditional opening of the verified jsonlines file before the 'with' statement
+    verified_writer = None
+    if verified_json_lines_file_path:
+        verified_writer = open(verified_json_lines_file_path, mode='w')
 
-    # Generate Markdown tables for each group
-    markdown_string = ""
-    for name, group in sorted_df.groupby('task group'):
-        markdown_string += f"## {name}\n\n"
-        # Now including the "code" field as the second column
-        markdown_string += group[['instruction', 'code', 'target']].to_markdown(index=False)
-        markdown_string += "\n\n"
-    
-    return markdown_string
+    with open(output_file_path, 'w', encoding='utf-8') as output_file:
+        with open(json_lines_file_path, 'r') as file:
+            for line_number, line in enumerate(file, start=1):
+                try:
+                    json_line = json.loads(line)
+                    try:
+                        # Generate the ModifiedText based on the source text and the task's code
+                        modified_text = execute_transformation(json_line['code'], text)
 
-def save_markdown(markdown_string, output_filename='tasks.md'):
-    with open(output_filename, 'w') as file:
-        file.write(markdown_string)
-    print(f"Saved report to {output_filename}")
+                        # Fill in the template with either the original text or the modified text
+                        instruction = json_line['instruction'].replace("{InputText}", text).replace("{ModifiedText}", modified_text)
+
+                        # Determine the appropriate output for the training sample based on the task definition
+                        output = json_line['target'].replace("{InputText}", text).replace("{ModifiedText}", modified_text)
+
+                        training_sample = {
+                            "instruction": instruction,
+                            "output": output
+                        }
+
+                        # Write the training sample to the output file
+                        output_file.write(json.dumps(training_sample) + '\n')
+
+                        # If verified_json_lines_file_path is provided, write the line to the verified JSON-lines file
+                        if verified_writer is not None:
+                            verified_writer.write(json.dumps(json_line) + '\n')
+
+                        # Print the instruction and output to the console for verification
+                        print(f"Instruction: {instruction}\nOutput: {output}\n")
+                    except Exception as e:
+                        # Print any error messages encountered during the transformation or file operations
+                        print(f"Error processing transformation on line {line_number}: {e}")
+                except json.JSONDecodeError as e:
+                    # Print the error message for the invalid JSON line and continue execution
+                    print(f"Error processing JSON line {line_number}: {e}")
+
+    # Properly close the verified_writer if it was opened
+    if verified_writer is not None:
+        verified_writer.close()
+
+
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate Markdown tables from JSON Lines tasks.')
-    parser.add_argument('--input_json_filename', type=str, default='templates/samples.jsonl', help='Path to the input JSON Lines file.')
-    parser.add_argument('--sorted_json_lines_file', type=str, help='Path to save the sorted JSON Lines file.', default=None)
-    
+    parser = argparse.ArgumentParser(description="Generate instruction tuning training examples.")
+    parser.add_argument("--input_text", type=str, required=True, help="Input text to transform.")
+    parser.add_argument("--json_lines_file", type=str, required=True, help="Path to the json-lines file with transformation templates.")
+    parser.add_argument("--output_file", type=str, required=True, help="Path to save the output training examples.")
+    parser.add_argument("--verified_json_lines_file", type=str, help="Path to save the verified json-lines file without any processing errors.")
+
     args = parser.parse_args()
-    markdown_string = generate_markdown_tables(args.input_json_filename, args.sorted_json_lines_file)
-    save_markdown(markdown_string)
+
+    generate_training_samples(args.input_text, args.json_lines_file, args.output_file, args.verified_json_lines_file)
 
 if __name__ == "__main__":
     main()
-
