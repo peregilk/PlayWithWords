@@ -26,7 +26,6 @@
 |:----------------------------------------------------------------------------------------------------------------------------------------|:---------------|
 | Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                    | {ModifiedText} |
 | Please remove all but the middle character of each word, then reverse the order of the remaining characters in this text: "{InputText}" | {ModifiedText} |
-| Please remove all spaces and reverse the order of characters in this text: "{InputText}"                                                | {ModifiedText} |
 | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | {ModifiedText} |
 | Please swap the case of all letters in the following text: "{InputText}"                                                                | {ModifiedText} |
 
@@ -51,12 +50,7 @@
 | Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                | {ModifiedText} |
 | Please reverse the word order in the first and last sentence of the following text: "{InputText}"                                             | {ModifiedText} |
 | Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                                  | {ModifiedText} |
-
-## Sentence Reconstruction
-
-| instruction                                                                               | target      |
-|:------------------------------------------------------------------------------------------|:------------|
-| Please reorder the following scrambled words to form coherent sentences: "{ModifiedText}" | {InputText} |
+| Please reorder the following scrambled words to form coherent sentences: "{ModifiedText}"                                                     | {InputText}    |
 
 ## Text Analysis
 
@@ -106,14 +100,9 @@
 
 | instruction                                                                                                                                                  | target      |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence.                     | {InputText} |
 | The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence. | {InputText} |
 | Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                      | {InputText} |
-
-## Vowel Restoration
-
-| instruction                                                                                                                              | target      |
-|:-----------------------------------------------------------------------------------------------------------------------------------------|:------------|
-| Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence. | {InputText} |
 
 ## Word Manipulation
 
@@ -122,7 +111,6 @@
 | Please double each word in the following text: "{InputText}"                                                                                          | {ModifiedText} |
 | Please create portmanteau words from the following text by combining the first half of each word with the second half of the next word: "{InputText}" | {ModifiedText} |
 | Please remove all but the first and last character of each word in this text: "{InputText}"                                                           | {ModifiedText} |
-| Please remove all but the first and last letter of each word, then reverse the order of the remaining words in this text: "{InputText}"               | {ModifiedText} |
 | Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                                  | {ModifiedText} |
 | Please remove duplicate words from this text: "{InputText}"                                                                                           | {ModifiedText} |
 | Please remove every other word from the following text, starting with the second word: "{InputText}"                                                  | {ModifiedText} |
