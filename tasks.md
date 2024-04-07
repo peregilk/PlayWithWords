@@ -29,12 +29,6 @@
 | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | {ModifiedText} |
 | Please swap the case of all letters in the following text: "{InputText}"                                                                | {ModifiedText} |
 
-## Letter Restoration
-
-| instruction                                                                                                                                                                                    | target      |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
-| All instances of the letter 'e' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter 'e' back into the correct positions. | {InputText} |
-
 ## Sentence Manipulation
 
 | instruction                                                                                                                                   | target         |
@@ -98,11 +92,13 @@
 
 ## Text Restoration
 
-| instruction                                                                                                                                                  | target      |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
-| Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence.                     | {InputText} |
-| The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence. | {InputText} |
-| Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                      | {InputText} |
+| instruction                                                                                                                                                                                    | target      |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence.                                                       | {InputText} |
+| The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence.                                   | {InputText} |
+| The word 'the' has been removed from the following text: "{ModifiedText}". Please reinsert 'the' back into the correct positions to restore the complete sentence.                             | {InputText} |
+| All instances of the letter 'e' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter 'e' back into the correct positions. | {InputText} |
+| Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                                                        | {InputText} |
 
 ## Word Manipulation
 
@@ -132,10 +128,4 @@
 | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"                                              | {ModifiedText} |
 | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}"                                          | {ModifiedText} |
 | A word in the following sentence is scrambled: "{ModifiedText}". Please identify the scrambled word, unscramble it, and provide the correct sentence. | {InputText}    |
-
-## Word Restoration
-
-| instruction                                                                                                                                                        | target      |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
-| The word 'the' has been removed from the following text: "{ModifiedText}". Please reinsert 'the' back into the correct positions to restore the complete sentence. | {InputText} |
 

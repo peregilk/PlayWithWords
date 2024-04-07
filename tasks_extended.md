@@ -33,12 +33,6 @@
 | Reverse word order and remove spaces                                    | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | ModifiedText = ''.join(InputText.split()[::-1])                                                          | {ModifiedText} |
 | Swap case                                                               | Please swap the case of all letters in the following text: "{InputText}"                                                                | ModifiedText = InputText.swapcase()                                                                      | {ModifiedText} |
 
-## Letter Restoration
-
-| task                                   | instruction                                                                                                                                                                                    | code                                      | target      |
-|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|:------------|
-| Restore missing letters 'e' from words | All instances of the letter 'e' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter 'e' back into the correct positions. | ModifiedText = InputText.replace('e', '') | {InputText} |
-
 ## Sentence Manipulation
 
 | task                                                                               | instruction                                                                                                                                   | code                                                                                                                               | target         |
@@ -129,11 +123,13 @@
 
 ## Text Restoration
 
-| task                        | instruction                                                                                                                                                  | code                                                                                                          | target      |
-|:----------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:------------|
-| Add back dropped vowels     | Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence.                     | ModifiedText = InputText.replace('a', '').replace('e', '').replace('i', '').replace('o', '').replace('u', '') | {InputText} |
-| Merge words without spaces  | The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence. | ModifiedText = ''.join(InputText.split())                                                                     | {InputText} |
-| Restore removed punctuation | Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                      | ModifiedText = InputText.replace('.', '').replace(',', '').replace('?', '')                                   | {InputText} |
+| task                                   | instruction                                                                                                                                                                                    | code                                                                                                          | target      |
+|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:------------|
+| Add back dropped vowels                | Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence.                                                       | ModifiedText = InputText.replace('a', '').replace('e', '').replace('i', '').replace('o', '').replace('u', '') | {InputText} |
+| Merge words without spaces             | The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence.                                   | ModifiedText = ''.join(InputText.split())                                                                     | {InputText} |
+| Reinsert the word 'the'                | The word 'the' has been removed from the following text: "{ModifiedText}". Please reinsert 'the' back into the correct positions to restore the complete sentence.                             | ModifiedText = InputText.replace(' the ', ' ')                                                                | {InputText} |
+| Restore missing letters 'e' from words | All instances of the letter 'e' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter 'e' back into the correct positions. | ModifiedText = InputText.replace('e', '')                                                                     | {InputText} |
+| Restore removed punctuation            | Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                                                        | ModifiedText = InputText.replace('.', '').replace(',', '').replace('?', '')                                   | {InputText} |
 
 ## Word Manipulation
 
@@ -164,10 +160,4 @@
 | Sort words by length                                                | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"                                              | ModifiedText = ' '.join(sorted(InputText.split(), key=len))                                                  | {ModifiedText} |
 | Sort words by number of vowels                                      | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}"                                          | ModifiedText = ' '.join(sorted(InputText.split(), key=lambda w: sum(c in 'aeiou' for c in w)))               | {ModifiedText} |
 | Unscramble a single word in a sentence                              | A word in the following sentence is scrambled: "{ModifiedText}". Please identify the scrambled word, unscramble it, and provide the correct sentence. | ModifiedText = InputText.replace('word', ''.join(random.sample('word', len('word'))))                        | {InputText}    |
-
-## Word Restoration
-
-| task                    | instruction                                                                                                                                                        | code                                           | target      |
-|:------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:------------|
-| Reinsert the word 'the' | The word 'the' has been removed from the following text: "{ModifiedText}". Please reinsert 'the' back into the correct positions to restore the complete sentence. | ModifiedText = InputText.replace(' the ', ' ') | {InputText} |
 
