@@ -4,6 +4,9 @@
 
 | instruction                                                                                                 | target         |
 |:------------------------------------------------------------------------------------------------------------|:---------------|
+| Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"                         | {ModifiedText} |
+| Please convert the following text to binary, with spaces between each byte: "{InputText}"                   | {ModifiedText} |
+| Please convert the following text to hexadecimal, with spaces between each byte: "{InputText}"              | {ModifiedText} |
 | Please convert this text to leetspeak: "{InputText}"                                                        | {ModifiedText} |
 | Please convert this text to pig latin: "{InputText}"                                                        | {ModifiedText} |
 | Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}" | {ModifiedText} |
@@ -60,14 +63,6 @@
 | Please replace each word with its last two letters in this text: "{InputText}"      | {ModifiedText} |
 | Please replace each word with its length in this text: "{InputText}"                | {ModifiedText} |
 | Please replace each word with its second letter in this text: "{InputText}"         | {ModifiedText} |
-
-## Text Encoding
-
-| instruction                                                                                    | target         |
-|:-----------------------------------------------------------------------------------------------|:---------------|
-| Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"            | {ModifiedText} |
-| Please convert the following text to binary, with spaces between each byte: "{InputText}"      | {ModifiedText} |
-| Please convert the following text to hexadecimal, with spaces between each byte: "{InputText}" | {ModifiedText} |
 
 ## Text Extraction
 

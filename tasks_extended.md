@@ -2,11 +2,19 @@
 
 ## Artificial Languages
 
-| task                 | instruction                                                                                                 | code                                                                                                          | target         |
-|:---------------------|:------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:---------------|
-| Convert to leetspeak | Please convert this text to leetspeak: "{InputText}"                                                        | ModifiedText = InputText.translate(str.maketrans('AEIOUaeiou', '4310543105'))                                 | {ModifiedText} |
-| Convert to pig latin | Please convert this text to pig latin: "{InputText}"                                                        | ModifiedText = ' '.join([word[1:]+word[0]+'ay' if word[0].isalpha() else word for word in InputText.split()]) | {ModifiedText} |
-| Igpay Atinlay        | Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}" | ModifiedText = ' '.join(w + 'ay' for w in InputText.split())                                                  | {ModifiedText} |
+| task                       | instruction                                                                                                 | code                                                                                                          | target         |
+|:---------------------------|:------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:---------------|
+| Caesar cipher with shift 5 | Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"                         | import string                                                                                                 | {ModifiedText} |
+|                            |                                                                                                             | shift = 5                                                                                                     |                |
+|                            |                                                                                                             | alphabet = string.ascii_lowercase                                                                             |                |
+|                            |                                                                                                             | shifted_alphabet = alphabet[shift:] + alphabet[:shift]                                                        |                |
+|                            |                                                                                                             | table = str.maketrans(alphabet, shifted_alphabet)                                                             |                |
+|                            |                                                                                                             | ModifiedText = InputText.translate(table)                                                                     |                |
+| Convert to binary          | Please convert the following text to binary, with spaces between each byte: "{InputText}"                   | ModifiedText = ' '.join(format(ord(c), '08b') for c in InputText)                                             | {ModifiedText} |
+| Convert to hexadecimal     | Please convert the following text to hexadecimal, with spaces between each byte: "{InputText}"              | ModifiedText = ' '.join(hex(ord(c))[2:].zfill(2) for c in InputText)                                          | {ModifiedText} |
+| Convert to leetspeak       | Please convert this text to leetspeak: "{InputText}"                                                        | ModifiedText = InputText.translate(str.maketrans('AEIOUaeiou', '4310543105'))                                 | {ModifiedText} |
+| Convert to pig latin       | Please convert this text to pig latin: "{InputText}"                                                        | ModifiedText = ' '.join([word[1:]+word[0]+'ay' if word[0].isalpha() else word for word in InputText.split()]) | {ModifiedText} |
+| Igpay Atinlay              | Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}" | ModifiedText = ' '.join(w + 'ay' for w in InputText.split())                                                  | {ModifiedText} |
 
 ## Character Replacement
 
@@ -84,19 +92,6 @@
 | Replace words with their last two letters      | Please replace each word with its last two letters in this text: "{InputText}"      | ModifiedText = ' '.join(word[-2:] for word in InputText.split())                                    | {ModifiedText} |
 | Replace words with their length                | Please replace each word with its length in this text: "{InputText}"                | ModifiedText = ' '.join(str(len(word)) for word in InputText.split())                               | {ModifiedText} |
 | Replace words with their second letter         | Please replace each word with its second letter in this text: "{InputText}"         | ModifiedText = ' '.join(word[1] if len(word) > 1 else '' for word in InputText.split())             | {ModifiedText} |
-
-## Text Encoding
-
-| task                       | instruction                                                                                    | code                                                                 | target         |
-|:---------------------------|:-----------------------------------------------------------------------------------------------|:---------------------------------------------------------------------|:---------------|
-| Caesar cipher with shift 5 | Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"            | import string                                                        | {ModifiedText} |
-|                            |                                                                                                | shift = 5                                                            |                |
-|                            |                                                                                                | alphabet = string.ascii_lowercase                                    |                |
-|                            |                                                                                                | shifted_alphabet = alphabet[shift:] + alphabet[:shift]               |                |
-|                            |                                                                                                | table = str.maketrans(alphabet, shifted_alphabet)                    |                |
-|                            |                                                                                                | ModifiedText = InputText.translate(table)                            |                |
-| Convert to binary          | Please convert the following text to binary, with spaces between each byte: "{InputText}"      | ModifiedText = ' '.join(format(ord(c), '08b') for c in InputText)    | {ModifiedText} |
-| Convert to hexadecimal     | Please convert the following text to hexadecimal, with spaces between each byte: "{InputText}" | ModifiedText = ' '.join(hex(ord(c))[2:].zfill(2) for c in InputText) | {ModifiedText} |
 
 ## Text Extraction
 
