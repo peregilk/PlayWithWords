@@ -11,24 +11,19 @@
 | Please convert this text to pig latin: "{InputText}"                                                        | {ModifiedText} |
 | Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}" | {ModifiedText} |
 
-## Character Replacement
-
-| instruction                                                                                             | target         |
-|:--------------------------------------------------------------------------------------------------------|:---------------|
-| Please remove all punctuation from the following text: "{InputText}"                                    | {ModifiedText} |
-| Please remove all spaces in this text: "{InputText}"                                                    | {ModifiedText} |
-| Please replace all instances of the letter 'e' in the following text with the number '3': "{InputText}" | {ModifiedText} |
-| Please replace all consonants in the following text with asterisks (*): "{InputText}"                   | {ModifiedText} |
-| Please replace all punctuation with spaces in this text: "{InputText}"                                  | {ModifiedText} |
-| Please replace all spaces in the following text with underscores: "{InputText}"                         | {ModifiedText} |
-| Please replace all vowels in the following text with asterisks (*): "{InputText}"                       | {ModifiedText} |
-
-## Character Shuffling
+## Character Manipulation
 
 | instruction                                                                                                                             | target         |
 |:----------------------------------------------------------------------------------------------------------------------------------------|:---------------|
 | Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                    | {ModifiedText} |
 | Please remove all but the middle character of each word, then reverse the order of the remaining characters in this text: "{InputText}" | {ModifiedText} |
+| Please remove all punctuation from the following text: "{InputText}"                                                                    | {ModifiedText} |
+| Please remove all spaces in this text: "{InputText}"                                                                                    | {ModifiedText} |
+| Please replace all instances of the letter 'e' in the following text with the number '3': "{InputText}"                                 | {ModifiedText} |
+| Please replace all consonants in the following text with asterisks (*): "{InputText}"                                                   | {ModifiedText} |
+| Please replace all punctuation with spaces in this text: "{InputText}"                                                                  | {ModifiedText} |
+| Please replace all spaces in the following text with underscores: "{InputText}"                                                         | {ModifiedText} |
+| Please replace all vowels in the following text with asterisks (*): "{InputText}"                                                       | {ModifiedText} |
 | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | {ModifiedText} |
 | Please swap the case of all letters in the following text: "{InputText}"                                                                | {ModifiedText} |
 
