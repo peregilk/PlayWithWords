@@ -34,10 +34,20 @@
 | Reverse word order and remove spaces                                    | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | ModifiedText = ''.join(InputText.split()[::-1])                                                          | {ModifiedText} |
 | Swap case                                                               | Please swap the case of all letters in the following text: "{InputText}"                                                                | ModifiedText = InputText.swapcase()                                                                      | {ModifiedText} |
 
+## Letter Restoration
+
+| task                                   | instruction                                                                                                                                                                                    | code                                      | target      |
+|:---------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------|:------------|
+| Restore missing letters 'e' from words | All instances of the letter 'e' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter 'e' back into the correct positions. | ModifiedText = InputText.replace('e', '') | {InputText} |
+
 ## Sentence Manipulation
 
 | task                                                                               | instruction                                                                                                                                   | code                                                                                                                               | target         |
 |:-----------------------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Reconstruct scrambled sentences                                                    | Please reorder the words in the following text to form coherent sentences: "{ModifiedText}"                                                   | import random                                                                                                                      | {InputText}    |
+|                                                                                    |                                                                                                                                               | words = InputText.split()                                                                                                          |                |
+|                                                                                    |                                                                                                                                               | random.shuffle(words)                                                                                                              |                |
+|                                                                                    |                                                                                                                                               | ModifiedText = ' '.join(words)                                                                                                     |                |
 | Remove all but the first and last word                                             | Please remove all but the first and last word from this text: "{InputText}"                                                                   | words = InputText.split()                                                                                                          | {ModifiedText} |
 |                                                                                    |                                                                                                                                               | ModifiedText = words[0] + ' ' + words[-1]                                                                                          |                |
 | Remove all but the first and last word of each sentence and reverse sentence order | Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: "{InputText}" | sentences = [sentence.split() for sentence in InputText.split('. ')]                                                               | {ModifiedText} |
@@ -62,6 +72,15 @@
 |                                                                                    |                                                                                                                                               | ModifiedText = ' '.join(sentences)                                                                                                 |                |
 | Sort sentences by length                                                           | Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                                  | import re                                                                                                                          | {ModifiedText} |
 |                                                                                    |                                                                                                                                               | ModifiedText = ' '.join(sorted(re.split(r'(?<=[.!?]) +', InputText), key=len))                                                     |                |
+
+## Sentence Reconstruction
+
+| task                               | instruction                                                                               | code                           | target      |
+|:-----------------------------------|:------------------------------------------------------------------------------------------|:-------------------------------|:------------|
+| Unscramble words to form sentences | Please reorder the following scrambled words to form coherent sentences: "{ModifiedText}" | import random                  | {InputText} |
+|                                    |                                                                                           | words = InputText.split()      |             |
+|                                    |                                                                                           | random.shuffle(words)          |             |
+|                                    |                                                                                           | ModifiedText = ' '.join(words) |             |
 
 ## Text Analysis
 
@@ -105,12 +124,27 @@
 | task                         | instruction                                                                                                                 | code                                                                                             | target         |
 |:-----------------------------|:----------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------|:---------------|
 | Acronymize                   | Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}" | ModifiedText = ''.join(w[0].upper() for w in InputText.split())                                  | {ModifiedText} |
+| Add back commas              | Please add commas back into the following text at appropriate places: "{ModifiedText}"                                      | ModifiedText = InputText.replace(',', '')                                                        | {InputText}    |
+| Add back spaces              | Please add spaces back into the following text where they are missing: "{ModifiedText}"                                     | ModifiedText = InputText.replace(' ', '')                                                        | {InputText}    |
 | Add word numbers             | Please add a number in parentheses after each word in this text indicating its position: "{InputText}"                      | ModifiedText = ' '.join(f'{w} ({i+1})' for i,w in enumerate(InputText.split()))                  | {ModifiedText} |
 | Capitalize all words         | Please capitalize all words in this text: "{InputText}"                                                                     | ModifiedText = InputText.title()                                                                 | {ModifiedText} |
 | Capitalize every fourth word | Please capitalize every fourth word in this text, starting with the first word: "{InputText}"                               | ModifiedText = ' '.join(w.capitalize() if i%4==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
 | Capitalize every other word  | Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | ModifiedText = ' '.join(w.capitalize() if i%2==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
 | Convert to camel case        | Please convert this text to camel case: "{InputText}"                                                                       | ModifiedText = InputText.title().replace(' ', '')                                                | {ModifiedText} |
 | Convert to uppercase         | Please convert this text to uppercase: "{InputText}"                                                                        | ModifiedText = InputText.upper()                                                                 | {ModifiedText} |
+
+## Text Restoration
+
+| task                        | instruction                                                                                                                                                  | code                                                                        | target      |
+|:----------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------------------|:------------|
+| Merge words without spaces  | The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence. | ModifiedText = ''.join(InputText.split())                                   | {InputText} |
+| Restore removed punctuation | Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                      | ModifiedText = InputText.replace('.', '').replace(',', '').replace('?', '') | {InputText} |
+
+## Vowel Restoration
+
+| task                    | instruction                                                                                                                              | code                                                                                                          | target      |
+|:------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------|:------------|
+| Add back dropped vowels | Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence. | ModifiedText = InputText.replace('a', '').replace('e', '').replace('i', '').replace('o', '').replace('u', '') | {InputText} |
 
 ## Word Manipulation
 
@@ -141,4 +175,11 @@
 | Sort words alphabetically                                                    | Please sort all the words in the following text alphabetically: "{InputText}"                                                                         | ModifiedText = ' '.join(sorted(InputText.split()))                                                           | {ModifiedText} |
 | Sort words by length                                                         | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"                                              | ModifiedText = ' '.join(sorted(InputText.split(), key=len))                                                  | {ModifiedText} |
 | Sort words by number of vowels                                               | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}"                                          | ModifiedText = ' '.join(sorted(InputText.split(), key=lambda w: sum(c in 'aeiou' for c in w)))               | {ModifiedText} |
+| Unscramble a single word in a sentence                                       | A word in the following sentence is scrambled: "{ModifiedText}". Please identify the scrambled word, unscramble it, and provide the correct sentence. | ModifiedText = InputText.replace('word', ''.join(random.sample('word', len('word'))))                        | {InputText}    |
+
+## Word Restoration
+
+| task                    | instruction                                                                                                                                                        | code                                           | target      |
+|:------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------|:------------|
+| Reinsert the word 'the' | The word 'the' has been removed from the following text: "{ModifiedText}". Please reinsert 'the' back into the correct positions to restore the complete sentence. | ModifiedText = InputText.replace(' the ', ' ') | {InputText} |
 

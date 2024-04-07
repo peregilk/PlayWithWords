@@ -30,10 +30,17 @@
 | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                     | {ModifiedText} |
 | Please swap the case of all letters in the following text: "{InputText}"                                                                | {ModifiedText} |
 
+## Letter Restoration
+
+| instruction                                                                                                                                                                                    | target      |
+|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| All instances of the letter 'e' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter 'e' back into the correct positions. | {InputText} |
+
 ## Sentence Manipulation
 
 | instruction                                                                                                                                   | target         |
 |:----------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please reorder the words in the following text to form coherent sentences: "{ModifiedText}"                                                   | {InputText}    |
 | Please remove all but the first and last word from this text: "{InputText}"                                                                   | {ModifiedText} |
 | Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: "{InputText}" | {ModifiedText} |
 | Please remove the first and last word from each sentence in this text: "{InputText}"                                                          | {ModifiedText} |
@@ -44,6 +51,12 @@
 | Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                | {ModifiedText} |
 | Please reverse the word order in the first and last sentence of the following text: "{InputText}"                                             | {ModifiedText} |
 | Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                                  | {ModifiedText} |
+
+## Sentence Reconstruction
+
+| instruction                                                                               | target      |
+|:------------------------------------------------------------------------------------------|:------------|
+| Please reorder the following scrambled words to form coherent sentences: "{ModifiedText}" | {InputText} |
 
 ## Text Analysis
 
@@ -80,12 +93,27 @@
 | instruction                                                                                                                 | target         |
 |:----------------------------------------------------------------------------------------------------------------------------|:---------------|
 | Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}" | {ModifiedText} |
+| Please add commas back into the following text at appropriate places: "{ModifiedText}"                                      | {InputText}    |
+| Please add spaces back into the following text where they are missing: "{ModifiedText}"                                     | {InputText}    |
 | Please add a number in parentheses after each word in this text indicating its position: "{InputText}"                      | {ModifiedText} |
 | Please capitalize all words in this text: "{InputText}"                                                                     | {ModifiedText} |
 | Please capitalize every fourth word in this text, starting with the first word: "{InputText}"                               | {ModifiedText} |
 | Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | {ModifiedText} |
 | Please convert this text to camel case: "{InputText}"                                                                       | {ModifiedText} |
 | Please convert this text to uppercase: "{InputText}"                                                                        | {ModifiedText} |
+
+## Text Restoration
+
+| instruction                                                                                                                                                  | target      |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence. | {InputText} |
+| Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                      | {InputText} |
+
+## Vowel Restoration
+
+| instruction                                                                                                                              | target      |
+|:-----------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence. | {InputText} |
 
 ## Word Manipulation
 
@@ -115,4 +143,11 @@
 | Please sort all the words in the following text alphabetically: "{InputText}"                                                                         | {ModifiedText} |
 | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"                                              | {ModifiedText} |
 | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}"                                          | {ModifiedText} |
+| A word in the following sentence is scrambled: "{ModifiedText}". Please identify the scrambled word, unscramble it, and provide the correct sentence. | {InputText}    |
+
+## Word Restoration
+
+| instruction                                                                                                                                                        | target      |
+|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------|
+| The word 'the' has been removed from the following text: "{ModifiedText}". Please reinsert 'the' back into the correct positions to restore the complete sentence. | {InputText} |
 
