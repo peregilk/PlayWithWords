@@ -36,11 +36,18 @@
 
 | instruction                                                                                                                                   | target         |
 |:----------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please change each letter to alternate case starting with lowercase, shuffle the words, and then reverse the string: "{InputText}"            | {ModifiedText} |
+| Please double each letter in the text and then reverse the entire string: "{InputText}"                                                       | {ModifiedText} |
+| Please encode each word in the text as its ASCII value, separated by dashes, then reverse the order of these codes: "{InputText}"             | {ModifiedText} |
+| Extract the initials of each word, concatenate them, and reverse the string: "{InputText}"                                                    | {ModifiedText} |
+| For each word in the text, interleave it with its reverse and then reverse the entire sentence order: "{InputText}"                           | {ModifiedText} |
 | Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: "{InputText}" | {ModifiedText} |
 | Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                          | {ModifiedText} |
 | Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                          | {ModifiedText} |
+| Remove all vowels from the text, duplicate the remaining consonants, and then reverse the string: "{InputText}"                               | {ModifiedText} |
 | Please replace each word in this text with its length, then reverse the resulting string: "{InputText}"                                       | {ModifiedText} |
 | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                           | {ModifiedText} |
+| Please scramble the inner letters of each word, leaving the first and last letters intact, then reverse the order of the words: "{InputText}" | {ModifiedText} |
 
 ## Language Understanding
 
@@ -59,15 +66,19 @@
 
 ## Sentence Manipulation
 
-| instruction                                                                                                                             | target         |
-|:----------------------------------------------------------------------------------------------------------------------------------------|:---------------|
-| Please remove the first and last word from each sentence in this text: "{InputText}"                                                    | {ModifiedText} |
-| Please remove the second and second-to-last word from each sentence in this text: "{InputText}"                                         | {ModifiedText} |
-| Please remove all sentences with 3 words or fewer and 10 words or more from the following text: "{InputText}"                           | {ModifiedText} |
-| Please reverse the order of characters in each sentence of the following text, while keeping the original sentence order: "{InputText}" | {ModifiedText} |
-| Please reverse the order of sentences in the following text: "{InputText}"                                                              | {ModifiedText} |
-| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"          | {ModifiedText} |
-| Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                            | {ModifiedText} |
+| instruction                                                                                                                                         | target         |
+|:----------------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please add the word 'Note:' to the beginning of each sentence in the following text: "{InputText}"                                                  | {ModifiedText} |
+| Please alternate the case of letters in each sentence starting with uppercase for the first sentence and so on in the following text: "{InputText}" | {ModifiedText} |
+| Please concatenate all sentences in reverse order into one continuous text in the following text: "{InputText}"                                     | {ModifiedText} |
+| Please number each sentence sequentially starting with 1 in the following text: "{InputText}"                                                       | {ModifiedText} |
+| Please remove the first and last word from each sentence in this text: "{InputText}"                                                                | {ModifiedText} |
+| Please remove the second and second-to-last word from each sentence in this text: "{InputText}"                                                     | {ModifiedText} |
+| Please remove all sentences with 3 words or fewer and 10 words or more from the following text: "{InputText}"                                       | {ModifiedText} |
+| Please reverse the order of characters in each sentence of the following text, while keeping the original sentence order: "{InputText}"             | {ModifiedText} |
+| Please reverse the order of sentences in the following text: "{InputText}"                                                                          | {ModifiedText} |
+| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                      | {ModifiedText} |
+| Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                                        | {ModifiedText} |
 
 ## Text Analysis
 
