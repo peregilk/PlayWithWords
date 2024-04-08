@@ -2,12 +2,19 @@
 
 ## Artificial Languages
 
-| instruction                                                                                                 | target         |
-|:------------------------------------------------------------------------------------------------------------|:---------------|
-| Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"                         | {ModifiedText} |
-| Please convert this text to leetspeak: "{InputText}"                                                        | {ModifiedText} |
-| Please convert this text to pig latin: "{InputText}"                                                        | {ModifiedText} |
-| Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}" | {ModifiedText} |
+| instruction                                                                                                                                   | target         |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please apply a Caesar cipher with a shift of 5 to the following text: "{InputText}"                                                           | {ModifiedText} |
+| Please convert the following text from its mirror language back to English: "{ModifiedText}"                                                  | {InputText}    |
+| Please convert this Pig Latin text back to English: "{ModifiedText}"                                                                          | {InputText}    |
+| Please convert this text from leetspeak to standard English: "{ModifiedText}"                                                                 | {InputText}    |
+| Insert 'ithag' after each vowel in the following text: "{InputText}"                                                                          | {ModifiedText} |
+| Please convert the following text to its mirror language, where each letter is replaced with its opposite (a<->z, b<->y, etc.): "{InputText}" | {ModifiedText} |
+| Please convert this text to leetspeak: "{InputText}"                                                                                          | {ModifiedText} |
+| Please convert this text to pig latin: "{InputText}"                                                                                          | {ModifiedText} |
+| Please translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): "{InputText}"                                   | {ModifiedText} |
+| Please reverse the Caesar cipher with a shift of 5 for the following text: "{ModifiedText}"                                                   | {InputText}    |
+| Shift all vowels forward one in the order aeiou (circularly, so 'u' becomes 'a'): "{InputText}"                                               | {ModifiedText} |
 
 ## Character Manipulation
 
