@@ -57,7 +57,6 @@
 | Please replace each word with its index in the sentence in this text: "{InputText}" | {ModifiedText} |
 | Please replace each word with its last two letters in this text: "{InputText}"      | {ModifiedText} |
 | Please replace each word with its length in this text: "{InputText}"                | {ModifiedText} |
-| Please replace each word with its second letter in this text: "{InputText}"         | {ModifiedText} |
 
 ## Text Extraction
 

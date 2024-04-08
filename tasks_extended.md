@@ -86,7 +86,6 @@
 | Replace words with their index in the sentence | Please replace each word with its index in the sentence in this text: "{InputText}" | ModifiedText = ' '.join(str(i) for i in range(len(InputText.split())))                              | {ModifiedText} |
 | Replace words with their last two letters      | Please replace each word with its last two letters in this text: "{InputText}"      | ModifiedText = ' '.join(word[-2:] for word in InputText.split())                                    | {ModifiedText} |
 | Replace words with their length                | Please replace each word with its length in this text: "{InputText}"                | ModifiedText = ' '.join(str(len(word)) for word in InputText.split())                               | {ModifiedText} |
-| Replace words with their second letter         | Please replace each word with its second letter in this text: "{InputText}"         | ModifiedText = ' '.join(word[1] if len(word) > 1 else '' for word in InputText.split())             | {ModifiedText} |
 
 ## Text Extraction
 
