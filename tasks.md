@@ -15,23 +15,27 @@
 |:--------------------------------------------------------------------------------------------------------------------------|:---------------|
 | Please remove all but the first and last character of each word in this text: "{InputText}"                               | {ModifiedText} |
 | Please remove all but the first letter of each word in this text: "{InputText}"                                           | {ModifiedText} |
-| Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"      | {ModifiedText} |
 | Please remove all but the last letter of each word in this text: "{InputText}"                                            | {ModifiedText} |
-| Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                      | {ModifiedText} |
 | Please remove the last letter from each word in this text: "{InputText}"                                                  | {ModifiedText} |
 | Please remove all punctuation from the following text: "{InputText}"                                                      | {ModifiedText} |
 | Please remove all spaces in this text: "{InputText}"                                                                      | {ModifiedText} |
 | Please replace all instances of the character '{Char1}' in the following text with '{Char2}': "{InputText}"               | {ModifiedText} |
 | Please replace all consonants in the following text with asterisks (*): "{InputText}"                                     | {ModifiedText} |
-| Please replace all punctuation with spaces in this text: "{InputText}"                                                    | {ModifiedText} |
 | Please replace all spaces in the following text with underscores: "{InputText}"                                           | {ModifiedText} |
 | Please replace all vowels in the following text with asterisks (*): "{InputText}"                                         | {ModifiedText} |
-| Please replace each word with its first letter in this text: "{InputText}"                                                | {ModifiedText} |
-| Please replace each word with its first two letters in this text: "{InputText}"                                           | {ModifiedText} |
 | Please reverse the character order in every third word of the following text, starting with the first word: "{InputText}" | {ModifiedText} |
 | Please reverse character order in every other word in this text, starting with the first word: "{InputText}"              | {ModifiedText} |
 | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                       | {ModifiedText} |
 | Please swap the case of all letters in the following text: "{InputText}"                                                  | {ModifiedText} |
+
+## Composite Transformations
+
+| instruction                                                                                                                                   | target         |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: "{InputText}" | {ModifiedText} |
+| Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                          | {ModifiedText} |
+| Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                          | {ModifiedText} |
+| Please replace each word in this text with its length, then reverse the resulting string: "{InputText}"                                       | {ModifiedText} |
 
 ## Language Understanding
 
@@ -49,16 +53,15 @@
 
 ## Sentence Manipulation
 
-| instruction                                                                                                                                   | target         |
-|:----------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
-| Please remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: "{InputText}" | {ModifiedText} |
-| Please remove the first and last word from each sentence in this text: "{InputText}"                                                          | {ModifiedText} |
-| Please remove the second and second-to-last word from each sentence in this text: "{InputText}"                                               | {ModifiedText} |
-| Please remove all sentences with 3 words or fewer and 10 words or more from the following text: "{InputText}"                                 | {ModifiedText} |
-| Please reverse the order of characters in each sentence of the following text, while keeping the original sentence order: "{InputText}"       | {ModifiedText} |
-| Please reverse the order of sentences in the following text: "{InputText}"                                                                    | {ModifiedText} |
-| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"                | {ModifiedText} |
-| Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                                  | {ModifiedText} |
+| instruction                                                                                                                             | target         |
+|:----------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+| Please remove the first and last word from each sentence in this text: "{InputText}"                                                    | {ModifiedText} |
+| Please remove the second and second-to-last word from each sentence in this text: "{InputText}"                                         | {ModifiedText} |
+| Please remove all sentences with 3 words or fewer and 10 words or more from the following text: "{InputText}"                           | {ModifiedText} |
+| Please reverse the order of characters in each sentence of the following text, while keeping the original sentence order: "{InputText}" | {ModifiedText} |
+| Please reverse the order of sentences in the following text: "{InputText}"                                                              | {ModifiedText} |
+| Please reverse the word order in each sentence of the following text, while keeping the original sentence order: "{InputText}"          | {ModifiedText} |
+| Please sort all the sentences in the following text by their length, from shortest to longest: "{InputText}"                            | {ModifiedText} |
 
 ## Text Analysis
 
@@ -72,7 +75,6 @@
 | Please replace each word with its index in the sentence in this text: "{InputText}"                          | {ModifiedText} |
 | Please replace each word with its last two letters in this text: "{InputText}"                               | {ModifiedText} |
 | Please replace each word with its length in this text: "{InputText}"                                         | {ModifiedText} |
-| Please replace each word in this text with its length, then reverse the resulting string: "{InputText}"      | {ModifiedText} |
 | Please sort all the words in the following text alphabetically: "{InputText}"                                | {ModifiedText} |
 | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"     | {ModifiedText} |
 | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}" | {ModifiedText} |
