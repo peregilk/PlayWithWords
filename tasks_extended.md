@@ -19,8 +19,6 @@
 | task                                                     | instruction                                                                                                               | code                                                                                                                            | target         |
 |:---------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------|:---------------|
 | Remove all but the first and last character of each word | Please remove all but the first and last character of each word in this text: "{InputText}"                               | ModifiedText = ' '.join(word[0]+word[-1] if len(word)>1 else word for word in InputText.split())                                | {ModifiedText} |
-| Remove all but the first letter of each word             | Please remove all but the first letter of each word in this text: "{InputText}"                                           | ModifiedText = ' '.join(word[0] for word in InputText.split())                                                                  | {ModifiedText} |
-| Remove all but the last letter of each word              | Please remove all but the last letter of each word in this text: "{InputText}"                                            | ModifiedText = ' '.join(word[-1] for word in InputText.split())                                                                 | {ModifiedText} |
 | Remove last letter from each word                        | Please remove the last letter from each word in this text: "{InputText}"                                                  | ModifiedText = ' '.join(word[:-1] for word in InputText.split())                                                                | {ModifiedText} |
 | Remove punctuation                                       | Please remove all punctuation from the following text: "{InputText}"                                                      | import string                                                                                                                   | {ModifiedText} |
 |                                                          |                                                                                                                           | ModifiedText = InputText.translate(str.maketrans('', '', string.punctuation))                                                   |                |
@@ -33,7 +31,6 @@
 |                                                          |                                                                                                                           | ModifiedText = re.sub(r'[aeiouAEIOUáÁéÉíÍóÓúÚàÀèÈìÌòÒùÙâÂêÊîÎôÔûÛäÄëËïÏöÖüÜãÃñÑõÕåÅœŒæÆ]', '*', InputText, flags=re.IGNORECASE) |                |
 | Reverse character order in every third word              | Please reverse the character order in every third word of the following text, starting with the first word: "{InputText}" | ModifiedText = ' '.join(w[::-1] if i%3==0 else w for i,w in enumerate(InputText.split()))                                       | {ModifiedText} |
 | Reverse every other word                                 | Please reverse character order in every other word in this text, starting with the first word: "{InputText}"              | ModifiedText = ' '.join(w[::-1] if i%2==0 else w for i,w in enumerate(InputText.split()))                                       | {ModifiedText} |
-| Reverse word order and remove spaces                     | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                       | ModifiedText = ''.join(InputText.split()[::-1])                                                                                 | {ModifiedText} |
 | Swap case                                                | Please swap the case of all letters in the following text: "{InputText}"                                                  | ModifiedText = InputText.swapcase()                                                                                             | {ModifiedText} |
 
 ## Composite Transformations
@@ -45,6 +42,7 @@
 | Remove all but the first letter of each word and reverse word order                | Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                          | ModifiedText = ' '.join(word[0] for word in InputText.split())[::-1]              | {ModifiedText} |
 | Remove all but the last letter of each word and reverse the string                 | Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                          | ModifiedText = ''.join(word[-1] for word in InputText.split())[::-1]              | {ModifiedText} |
 | Replace words with their length and reverse the string                             | Please replace each word in this text with its length, then reverse the resulting string: "{InputText}"                                       | ModifiedText = ''.join(str(len(word)) for word in InputText.split())[::-1]        | {ModifiedText} |
+| Reverse word order and remove spaces                                               | Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                           | ModifiedText = ''.join(InputText.split()[::-1])                                   | {ModifiedText} |
 
 ## Language Understanding
 
@@ -93,6 +91,7 @@
 | Add word numbers                               | Please add a number in parentheses after each word in this text indicating its position: "{InputText}"       | ModifiedText = ' '.join(f'{w} ({i+1})' for i,w in enumerate(InputText.split()))                | {ModifiedText} |
 | Count words                                    | Please count the number of words in this text: "{InputText}"                                                 | ModifiedText = str(len(InputText.split()))                                                     | {ModifiedText} |
 | Remove long words                              | Please remove all words with 7 letters or more from the following text: "{InputText}"                        | ModifiedText = ' '.join(w for w in InputText.split() if len(w) < 7)                            | {ModifiedText} |
+| Remove short and long words                    | Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}" | ModifiedText = ' '.join(w for w in InputText.split() if 3 < len(w) < 7)                        | {ModifiedText} |
 | Remove short words                             | Please remove all words with 3 letters or fewer from the following text: "{InputText}"                       | ModifiedText = ' '.join(w for w in InputText.split() if len(w) > 3)                            | {ModifiedText} |
 | Remove words with odd length                   | Please remove all words with odd length from this text: "{InputText}"                                        | ModifiedText = ' '.join(word for word in InputText.split() if len(word) % 2 == 0)              | {ModifiedText} |
 | Replace words with their index in the sentence | Please replace each word with its index in the sentence in this text: "{InputText}"                          | ModifiedText = ' '.join(str(i) for i in range(len(InputText.split())))                         | {ModifiedText} |
@@ -101,12 +100,6 @@
 | Sort words alphabetically                      | Please sort all the words in the following text alphabetically: "{InputText}"                                | ModifiedText = ' '.join(sorted(InputText.split()))                                             | {ModifiedText} |
 | Sort words by length                           | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"     | ModifiedText = ' '.join(sorted(InputText.split(), key=len))                                    | {ModifiedText} |
 | Sort words by number of vowels                 | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}" | ModifiedText = ' '.join(sorted(InputText.split(), key=lambda w: sum(c in 'aeiou' for c in w))) | {ModifiedText} |
-
-## Text Analysus
-
-| task                        | instruction                                                                                                  | code                                                                    | target         |
-|:----------------------------|:-------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:---------------|
-| Remove short and long words | Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}" | ModifiedText = ' '.join(w for w in InputText.split() if 3 < len(w) < 7) | {ModifiedText} |
 
 ## Text Extraction
 
@@ -127,18 +120,13 @@
 | Capitalize every other word  | Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | ModifiedText = ' '.join(w.capitalize() if i%2==0 else w for i,w in enumerate(InputText.split())) | {ModifiedText} |
 | Convert to camel case        | Please convert this text to camel case: "{InputText}"                                                                       | ModifiedText = InputText.title().replace(' ', '')                                                | {ModifiedText} |
 
-## Text Manipulation
-
-| task                                   | instruction                                                                 | code                                      | target         |
-|:---------------------------------------|:----------------------------------------------------------------------------|:------------------------------------------|:---------------|
-| Remove all but the first and last word | Please remove all but the first and last word from this text: "{InputText}" | words = InputText.split()                 | {ModifiedText} |
-|                                        |                                                                             | ModifiedText = words[0] + ' ' + words[-1] |                |
-
 ## Word Manipulation
 
-| task                              | instruction                                                                                          | code                                                                               | target         |
-|:----------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|:---------------|
-| Double each word                  | Please double each word in the following text: "{InputText}"                                         | ModifiedText = ' '.join(w+w for w in InputText.split())                            | {ModifiedText} |
-| Remove every other word           | Please remove every other word from the following text, starting with the second word: "{InputText}" | ModifiedText = ' '.join(w for i, w in enumerate(InputText.split()) if i % 2 == 0)  | {ModifiedText} |
-| Remove words containing '{Char1}' | Please remove all words containing '{Char1}' from this text: "{InputText}"                           | ModifiedText = ' '.join(word for word in InputText.split() if 'Char1' not in word) | {ModifiedText} |
+| task                                   | instruction                                                                                          | code                                                                               | target         |
+|:---------------------------------------|:-----------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------|:---------------|
+| Double each word                       | Please double each word in the following text: "{InputText}"                                         | ModifiedText = ' '.join(w+w for w in InputText.split())                            | {ModifiedText} |
+| Remove all but the first and last word | Please remove all but the first and last word from this text: "{InputText}"                          | words = InputText.split()                                                          | {ModifiedText} |
+|                                        |                                                                                                      | ModifiedText = words[0] + ' ' + words[-1]                                          |                |
+| Remove every other word                | Please remove every other word from the following text, starting with the second word: "{InputText}" | ModifiedText = ' '.join(w for i, w in enumerate(InputText.split()) if i % 2 == 0)  | {ModifiedText} |
+| Remove words containing '{Char1}'      | Please remove all words containing '{Char1}' from this text: "{InputText}"                           | ModifiedText = ' '.join(word for word in InputText.split() if 'Char1' not in word) | {ModifiedText} |
 

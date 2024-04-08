@@ -14,8 +14,6 @@
 | instruction                                                                                                               | target         |
 |:--------------------------------------------------------------------------------------------------------------------------|:---------------|
 | Please remove all but the first and last character of each word in this text: "{InputText}"                               | {ModifiedText} |
-| Please remove all but the first letter of each word in this text: "{InputText}"                                           | {ModifiedText} |
-| Please remove all but the last letter of each word in this text: "{InputText}"                                            | {ModifiedText} |
 | Please remove the last letter from each word in this text: "{InputText}"                                                  | {ModifiedText} |
 | Please remove all punctuation from the following text: "{InputText}"                                                      | {ModifiedText} |
 | Please remove all spaces in this text: "{InputText}"                                                                      | {ModifiedText} |
@@ -25,7 +23,6 @@
 | Please replace all vowels in the following text with asterisks (*): "{InputText}"                                         | {ModifiedText} |
 | Please reverse the character order in every third word of the following text, starting with the first word: "{InputText}" | {ModifiedText} |
 | Please reverse character order in every other word in this text, starting with the first word: "{InputText}"              | {ModifiedText} |
-| Please reverse the order of words and remove all spaces in this text: "{InputText}"                                       | {ModifiedText} |
 | Please swap the case of all letters in the following text: "{InputText}"                                                  | {ModifiedText} |
 
 ## Composite Transformations
@@ -36,6 +33,7 @@
 | Please remove all but the first letter of each word, then reverse the order of the words in this text: "{InputText}"                          | {ModifiedText} |
 | Please remove all but the last letter of each word, then reverse the resulting string: "{InputText}"                                          | {ModifiedText} |
 | Please replace each word in this text with its length, then reverse the resulting string: "{InputText}"                                       | {ModifiedText} |
+| Please reverse the order of words and remove all spaces in this text: "{InputText}"                                                           | {ModifiedText} |
 
 ## Language Understanding
 
@@ -70,6 +68,7 @@
 | Please add a number in parentheses after each word in this text indicating its position: "{InputText}"       | {ModifiedText} |
 | Please count the number of words in this text: "{InputText}"                                                 | {ModifiedText} |
 | Please remove all words with 7 letters or more from the following text: "{InputText}"                        | {ModifiedText} |
+| Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}" | {ModifiedText} |
 | Please remove all words with 3 letters or fewer from the following text: "{InputText}"                       | {ModifiedText} |
 | Please remove all words with odd length from this text: "{InputText}"                                        | {ModifiedText} |
 | Please replace each word with its index in the sentence in this text: "{InputText}"                          | {ModifiedText} |
@@ -78,12 +77,6 @@
 | Please sort all the words in the following text alphabetically: "{InputText}"                                | {ModifiedText} |
 | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"     | {ModifiedText} |
 | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}" | {ModifiedText} |
-
-## Text Analysus
-
-| instruction                                                                                                  | target         |
-|:-------------------------------------------------------------------------------------------------------------|:---------------|
-| Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}" | {ModifiedText} |
 
 ## Text Extraction
 
@@ -102,17 +95,12 @@
 | Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | {ModifiedText} |
 | Please convert this text to camel case: "{InputText}"                                                                       | {ModifiedText} |
 
-## Text Manipulation
-
-| instruction                                                                 | target         |
-|:----------------------------------------------------------------------------|:---------------|
-| Please remove all but the first and last word from this text: "{InputText}" | {ModifiedText} |
-
 ## Word Manipulation
 
 | instruction                                                                                          | target         |
 |:-----------------------------------------------------------------------------------------------------|:---------------|
 | Please double each word in the following text: "{InputText}"                                         | {ModifiedText} |
+| Please remove all but the first and last word from this text: "{InputText}"                          | {ModifiedText} |
 | Please remove every other word from the following text, starting with the second word: "{InputText}" | {ModifiedText} |
 | Please remove all words containing '{Char1}' from this text: "{InputText}"                           | {ModifiedText} |
 
