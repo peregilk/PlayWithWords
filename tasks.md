@@ -43,6 +43,7 @@
 | Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence.                                                                   | {InputText} |
 | Please add spaces back into the following text where they are missing: "{ModifiedText}"                                                                                                                    | {InputText} |
 | The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence.                                               | {InputText} |
+| One character in this text has been changed to another character. Identify the change and reconstruct the original sentence: "{ModifiedText}"                                                              | {InputText} |
 | Please reorder the words in the following text to form coherent sentences: "{ModifiedText}"                                                                                                                | {InputText} |
 | All instances of the letter '{Char1}' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter '{Char1}' back into the correct positions. | {InputText} |
 | Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                                                                    | {InputText} |
@@ -80,10 +81,12 @@
 
 ## Text Extraction
 
-| instruction                                                          | target         |
-|:---------------------------------------------------------------------|:---------------|
-| Please extract all consonants from the following text: "{InputText}" | {ModifiedText} |
-| Please extract all vowels from the following text: "{InputText}"     | {ModifiedText} |
+| instruction                                                                             | target         |
+|:----------------------------------------------------------------------------------------|:---------------|
+| Please extract all consonants from the following text: "{InputText}"                    | {ModifiedText} |
+| Please extract all vowels from the following text: "{InputText}"                        | {ModifiedText} |
+| Please identify all words in this text that contain the letter '{Char1}': "{InputText}" | {ModifiedText} |
+| Please find all words in this text that end with the letter '{Char1}': "{InputText}"    | {ModifiedText} |
 
 ## Text Formatting
 
