@@ -64,6 +64,22 @@
 |             9 | A word in the following sentence is scrambled: "{ModifiedText}". Please identify the scrambled word, unscramble it, and provide the correct sentence.                                                      | {InputText} |
 |            10 | Please reorder the following scrambled words to form coherent sentences: "{ModifiedText}"                                                                                                                  | {InputText} |
 
+## Letter Analysis
+
+|   task_number | instruction                                                                                                                                                              | target         |
+|--------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+|             1 | Please add a number in parentheses after each word in this text indicating its position: "{InputText}"                                                                   | {ModifiedText} |
+|             2 | Please count the number of consonants in the following text: "{InputText}"                                                                                               | {ModifiedText} |
+|             3 | Please count the number of lowercase letters in the following text: "{InputText}"                                                                                        | {ModifiedText} |
+|             4 | Count the number of unique letters in the following text. Exclude numbers and special characters: "{InputText}"                                                          | {ModifiedText} |
+|             5 | Please count the number of uppercase letters in the following text: "{InputText}"                                                                                        | {ModifiedText} |
+|             6 | Please count the number of vowels in the following text: "{InputText}"                                                                                                   | {ModifiedText} |
+|             7 | Identify all unique letters used in the following text: "{InputText}"                                                                                                    | {ModifiedText} |
+|             8 | Identify the first letter in the following text that does not repeat. If all letters repeat, return an empty response: "{InputText}"                                     | {ModifiedText} |
+|             9 | Find the last letter that appears more than once in the following text. If no letter repeats, return an empty response: "{InputText}"                                    | {ModifiedText} |
+|            10 | Find the first letter that appears exactly 3 times in the following text. Provide the letter. If no letter meets this condition, return an empty response: "{InputText}" | {ModifiedText} |
+|            11 | Find how many letters appear exactly N times in the following text. Provide the count: "{InputText}"                                                                     | {ModifiedText} |
+
 ## Sentence Manipulation
 
 |   task_number | instruction                                                                                                                                         | target         |
@@ -84,18 +100,17 @@
 
 |   task_number | instruction                                                                                                  | target         |
 |--------------:|:-------------------------------------------------------------------------------------------------------------|:---------------|
-|             1 | Please add a number in parentheses after each word in this text indicating its position: "{InputText}"       | {ModifiedText} |
-|             2 | Please count the number of words in this text: "{InputText}"                                                 | {ModifiedText} |
-|             3 | Please remove all words with 7 letters or more from the following text: "{InputText}"                        | {ModifiedText} |
-|             4 | Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}" | {ModifiedText} |
-|             5 | Please remove all words with 3 letters or fewer from the following text: "{InputText}"                       | {ModifiedText} |
-|             6 | Please remove all words with odd length from this text: "{InputText}"                                        | {ModifiedText} |
-|             7 | Please replace each word with its index in the sentence in this text: "{InputText}"                          | {ModifiedText} |
-|             8 | Please replace each word with its last two letters in this text: "{InputText}"                               | {ModifiedText} |
-|             9 | Please replace each word with its length in this text: "{InputText}"                                         | {ModifiedText} |
-|            10 | Please sort all the words in the following text alphabetically: "{InputText}"                                | {ModifiedText} |
-|            11 | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"     | {ModifiedText} |
-|            12 | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}" | {ModifiedText} |
+|             1 | Please count the number of words in this text: "{InputText}"                                                 | {ModifiedText} |
+|             2 | Please remove all words with 7 letters or more from the following text: "{InputText}"                        | {ModifiedText} |
+|             3 | Please remove all words with 3 letters or fewer and 7 letters or more from the following text: "{InputText}" | {ModifiedText} |
+|             4 | Please remove all words with 3 letters or fewer from the following text: "{InputText}"                       | {ModifiedText} |
+|             5 | Please remove all words with odd length from this text: "{InputText}"                                        | {ModifiedText} |
+|             6 | Please replace each word with its index in the sentence in this text: "{InputText}"                          | {ModifiedText} |
+|             7 | Please replace each word with its last two letters in this text: "{InputText}"                               | {ModifiedText} |
+|             8 | Please replace each word with its length in this text: "{InputText}"                                         | {ModifiedText} |
+|             9 | Please sort all the words in the following text alphabetically: "{InputText}"                                | {ModifiedText} |
+|            10 | Please sort all the words in the following text by their length, from shortest to longest: "{InputText}"     | {ModifiedText} |
+|            11 | Please sort all the words in the following text by their number of vowels, from least to most: "{InputText}" | {ModifiedText} |
 
 ## Text Extraction
 
