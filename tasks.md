@@ -99,29 +99,49 @@
 
 ## Text Extraction
 
-|   task_number | instruction                                                                             | target         |
-|--------------:|:----------------------------------------------------------------------------------------|:---------------|
-|             1 | Please extract all consonants from the following text: "{InputText}"                    | {ModifiedText} |
-|             2 | Please extract all vowels from the following text: "{InputText}"                        | {ModifiedText} |
-|             3 | Please identify all words in this text that contain the letter '{Char1}': "{InputText}" | {ModifiedText} |
-|             4 | Please find all words in this text that end with the letter '{Char1}': "{InputText}"    | {ModifiedText} |
+|   task_number | instruction                                                                                                   | target         |
+|--------------:|:--------------------------------------------------------------------------------------------------------------|:---------------|
+|             1 | Please extract all consonants from the following text: "{InputText}"                                          | {ModifiedText} |
+|             2 | Please extract the first word from each sentence in the following text: "{InputText}"                         | {ModifiedText} |
+|             3 | Please extract all unique words from the following text, disregarding case: "{InputText}"                     | {ModifiedText} |
+|             4 | Please extract all vowels from the following text: "{InputText}"                                              | {ModifiedText} |
+|             5 | Please identify all words in this text that contain the letter '{Char1}': "{InputText}"                       | {ModifiedText} |
+|             6 | Please find all words in this text that end with the letter '{Char1}': "{InputText}"                          | {ModifiedText} |
+|             7 | Please extract all words in this text that are longer than 5 letters: "{InputText}"                           | {ModifiedText} |
+|             8 | Please extract all words from the following text where the first and last letters are the same: "{InputText}" | {ModifiedText} |
+|             9 | Please extract all words from the following text that start with a vowel: "{InputText}"                       | {ModifiedText} |
+|            10 | Please extract all words from the following text that have an even number of characters: "{InputText}"        | {ModifiedText} |
+|            11 | Please extract all words in this text that do not contain the letter '{Char1}': "{InputText}"                 | {ModifiedText} |
 
 ## Text Formatting
 
-|   task_number | instruction                                                                                                                 | target         |
-|--------------:|:----------------------------------------------------------------------------------------------------------------------------|:---------------|
-|             1 | Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}" | {ModifiedText} |
-|             2 | Please capitalize all words in this text: "{InputText}"                                                                     | {ModifiedText} |
-|             3 | Please capitalize every fourth word in this text, starting with the first word: "{InputText}"                               | {ModifiedText} |
-|             4 | Please capitalize every other word in this text, starting with the first word: "{InputText}"                                | {ModifiedText} |
-|             5 | Please convert this text to camel case: "{InputText}"                                                                       | {ModifiedText} |
+|   task_number | instruction                                                                                                                           | target         |
+|--------------:|:--------------------------------------------------------------------------------------------------------------------------------------|:---------------|
+|             1 | Please create an acronym from the following text by taking the first letter of each word and capitalizing it: "{InputText}"           | {ModifiedText} |
+|             2 | Please make every fourth word bold in this text by using Markdown syntax: "{InputText}"                                               | {ModifiedText} |
+|             3 | Please capitalize all words in this text: "{InputText}"                                                                               | {ModifiedText} |
+|             4 | Please capitalize every fourth word in this text, starting with the first word: "{InputText}"                                         | {ModifiedText} |
+|             5 | Please capitalize every other word in this text, starting with the first word: "{InputText}"                                          | {ModifiedText} |
+|             6 | Please convert this text to camel case: "{InputText}"                                                                                 | {ModifiedText} |
+|             7 | Please convert every third word to inline code in Markdown in this text: "{InputText}"                                                | {ModifiedText} |
+|             8 | Please create a Markdown bullet list, where each item is a sentence from the following text: "{InputText}"                            | {ModifiedText} |
+|             9 | Please italicize and bold alternate words in this text using Markdown syntax, starting with italicizing the first word: "{InputText}" | {ModifiedText} |
+|            10 | Please italicize every third word in this text by using Markdown syntax: "{InputText}"                                                | {ModifiedText} |
+|            11 | Please strike through every fifth word in this text by using Markdown syntax: "{InputText}"                                           | {ModifiedText} |
 
 ## Word Manipulation
 
 |   task_number | instruction                                                                                          | target         |
 |--------------:|:-----------------------------------------------------------------------------------------------------|:---------------|
-|             1 | Please double each word in the following text: "{InputText}"                                         | {ModifiedText} |
-|             2 | Please remove all but the first and last word from this text: "{InputText}"                          | {ModifiedText} |
-|             3 | Please remove every other word from the following text, starting with the second word: "{InputText}" | {ModifiedText} |
-|             4 | Please remove all words containing '{Char1}' from this text: "{InputText}"                           | {ModifiedText} |
+|             1 | Please alternate the casing of words in this text, starting with lowercase: "{InputText}"            | {ModifiedText} |
+|             2 | Please capitalize every third word in this text, starting with the first word: "{InputText}"         | {ModifiedText} |
+|             3 | Please double each word in the following text: "{InputText}"                                         | {ModifiedText} |
+|             4 | Please double every vowel in the following text: "{InputText}"                                       | {ModifiedText} |
+|             5 | Please remove all but the first and last word from this text: "{InputText}"                          | {ModifiedText} |
+|             6 | Please remove every other word from the following text, starting with the second word: "{InputText}" | {ModifiedText} |
+|             7 | Please remove all words containing '{Char1}' from this text: "{InputText}"                           | {ModifiedText} |
+|             8 | Please remove all words that are shorter than 4 letters in this text: "{InputText}"                  | {ModifiedText} |
+|             9 | Please replace all vowels in the following text with asterisks: "{InputText}"                        | {ModifiedText} |
+|            10 | Please reverse the letters of each word in the following text: "{InputText}"                         | {ModifiedText} |
+|            11 | Please reverse the order of letters in every second word in this text: "{InputText}"                 | {ModifiedText} |
 
