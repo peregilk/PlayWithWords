@@ -57,12 +57,13 @@
 |             2 | Vowels have been removed from the following text: "{ModifiedText}". Please add back the dropped vowels to restore the complete sentence.                                                                   | {InputText} |
 |             3 | Please add spaces back into the following text where they are missing: "{ModifiedText}"                                                                                                                    | {InputText} |
 |             4 | The words in the following text have been merged into a single block without spaces: "{ModifiedText}". Please separate them back into the original sentence.                                               | {InputText} |
-|             5 | One character in this text has been changed to another character. Identify the change and reconstruct the original sentence: "{ModifiedText}"                                                              | {InputText} |
-|             6 | Please reorder the words in the following text to form coherent sentences: "{ModifiedText}"                                                                                                                | {InputText} |
-|             7 | All instances of the letter '{Char1}' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter '{Char1}' back into the correct positions. | {InputText} |
-|             8 | Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                                                                    | {InputText} |
-|             9 | A word in the following sentence is scrambled: "{ModifiedText}". Please identify the scrambled word, unscramble it, and provide the correct sentence.                                                      | {InputText} |
-|            10 | Please reorder the following scrambled words to form coherent sentences: "{ModifiedText}"                                                                                                                  | {InputText} |
+|             5 | Letters in some words of the following text have been unnecessarily duplicated: "{ModifiedText}". Please remove the duplicates to restore the original text.                                               | {InputText} |
+|             6 | One character in this text has been changed to another character. Identify the change and reconstruct the original sentence: "{ModifiedText}"                                                              | {InputText} |
+|             7 | Please reorder the words in the following text to form coherent sentences: "{ModifiedText}"                                                                                                                | {InputText} |
+|             8 | All instances of the letter '{Char1}' have been removed from the following text: "{ModifiedText}". Please restore the complete sentence by inserting the letter '{Char1}' back into the correct positions. | {InputText} |
+|             9 | Punctuation has been removed from the following text: "{ModifiedText}". Please add the punctuation back into the text where it belongs.                                                                    | {InputText} |
+|            10 | A word in the following sentence is scrambled: "{ModifiedText}". Please identify the scrambled word, unscramble it, and provide the correct sentence.                                                      | {InputText} |
+|            11 | Please reorder the following scrambled words to form coherent sentences: "{ModifiedText}"                                                                                                                  | {InputText} |
 
 ## Letter Analysis
 
