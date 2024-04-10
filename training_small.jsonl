@@ -1,0 +1,3 @@
+{"instruction": "Apply a Caesar cipher with a shift of 5 to the following text: \"This is just a test. Just a test.\"", "output": "Tmnx nx ozxy f yjxy. Jzxy f yjxy."}
+{"instruction": "Convert the following text from its mirror language back to English: \"Tsrh rh qfhg z gvhg. Jfhg z gvhg.\"", "output": "This is just a test. Just a test."}
+{"instruction": "Convert this Pig Latin text back to English: \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}
