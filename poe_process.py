@@ -1,8 +1,8 @@
 import os
-from poe_api_wrapper import AsyncPoeApi
 import asyncio
 import jsonlines
 import argparse
+from poe_api_wrapper import AsyncPoeApi
 
 # Reading environment variables
 b_token = os.getenv('B_TOKEN')
@@ -13,9 +13,10 @@ tokens = {
     'lat': lat_token
 }
 
-async def process_examples(client, training_examples, bot, output_file, prefix):
-    with jsonlines.open(output_file, mode='w') as writer:
-        for example in training_examples:
+async def process_examples(client, training_examples, bot, output_file, prefix, start_from):
+    mode = 'a' if start_from > 0 else 'w'  # Append if starting from a position other than 0
+    with jsonlines.open(output_file, mode=mode) as writer:
+        for example in training_examples[start_from:]:
             instruction = example['instruction']
             expected_output = example.get('output', '')
             message = f"{prefix}\n\n{instruction}"
@@ -32,9 +33,23 @@ async def process_examples(client, training_examples, bot, output_file, prefix):
 
 async def main(training_file, bot, output_file, prefix):
     client = await AsyncPoeApi(cookie=tokens).create()
+
+    # Determine how many examples have already been processed
+    processed_count = 0
+    if os.path.exists(output_file):
+        with jsonlines.open(output_file) as reader:
+            processed_count = len(list(reader))
+        print(f"Found interrupted output file with {processed_count} lines. Continuing processing from line {processed_count + 1}...")
+    else:
+        print("Output file does not exist. Starting processing from the beginning...")
+
     with jsonlines.open(training_file) as reader:
         training_examples = list(reader)
-    await process_examples(client, training_examples, bot, output_file, prefix)
+
+    if processed_count < len(training_examples):
+        await process_examples(client, training_examples, bot, output_file, prefix, processed_count)
+    else:
+        print("Output file is already completed. Nothing to be done.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process training examples using Poe API')
@@ -46,3 +61,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     asyncio.run(main(args.training_file, args.bot, args.output_file, args.prefix))
+
