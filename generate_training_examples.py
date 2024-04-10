@@ -65,7 +65,7 @@ def generate_training_samples(text: str, json_lines_file_path: str, output_file_
                         if verified_file:
                             verified_file.write(json_line)
 
-                        print(f"Instruction: {instruction}\nOutput: {output}\n")
+                        #print(f"Instruction: {instruction}\nOutput: {output}\n")
                     except Exception as e:
                         print(f"Error processing transformation on line {line_number}: {e}")
                 except json.JSONDecodeError as e:
@@ -85,7 +85,6 @@ def main():
 
     generate_training_samples(args.input_text, args.json_lines_file, args.output_file, Char1, Char2, Char3, args.verified_json_lines_file)
 
-    print(f"Char1: {Char1} (Position: {Char1_pos}), Char2: {Char2} (Position: {Char2_pos}), Char3: {Char3} (Position: {Char3_pos})")
 
 if __name__ == "__main__":
     main()
