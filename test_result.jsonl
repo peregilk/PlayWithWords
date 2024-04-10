@@ -1,3 +1,2 @@
-{"result_gpt3_5": "Ymnx nx ozyx f yjxy. Ozyx f yjxy."}
-{"result_gpt3_5": "This is what you have written in mirror language: \"This is just a test. Test a just.\"\n\nWhen we convert it back to English, it becomes: \"This is just a test. Test a just.\""}
-{"result_gpt3_5": "Ishtay siay ustjay aay esttay. Ustjay aay esttay."}
+{"input": {"instruction": "Convert this Pig Latin text back to English: \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}, "result_gpt3_5": "isThay isay ustjay ayay esttay. Ustjay ayay esttay.", "status_gpt3_5": false}
+{"input": {"instruction": "Convert this text from leetspeak to standard English: \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}, "result_gpt3_5": "This is just a test. Just a test.", "status_gpt3_5": true}
