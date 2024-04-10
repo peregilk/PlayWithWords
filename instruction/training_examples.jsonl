@@ -14,14 +14,14 @@
 {"instruction": "Remove the last letter from each word in this text: \"This is just a test. Just a test.\"", "output": "Thi i jus  test Jus  test"}
 {"instruction": "Remove all punctuation from the following text: \"This is just a test. Just a test.\"", "output": "This is just a test Just a test"}
 {"instruction": "Remove all spaces in this text: \"This is just a test. Just a test.\"", "output": "Thisisjustatest.Justatest."}
-{"instruction": "Replace all instances of the character 'a' in the following text with 'p': \"This is just a test. Just a test.\"", "output": "This is just p test. Just p test."}
+{"instruction": "Replace all instances of the character 'k' in the following text with 'm': \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}
 {"instruction": "Replace all consonants in the following text with asterisks (*): \"This is just a test. Just a test.\"", "output": "**i* i* *u** a *e**. *u** a *e**."}
 {"instruction": "Replace all spaces in the following text with underscores: \"This is just a test. Just a test.\"", "output": "This_is_just_a_test._Just_a_test."}
 {"instruction": "Replace all vowels in the following text with asterisks (*): \"This is just a test. Just a test.\"", "output": "Th*s *s j*st * t*st. J*st * t*st."}
 {"instruction": "Reverse the character order in every third word of the following text, starting with the first word: \"This is just a test. Just a test.\"", "output": "sihT is just a test. Just a test."}
 {"instruction": "Reverse character order in every other word in this text, starting with the first word: \"This is just a test. Just a test.\"", "output": "sihT is tsuj a .tset Just a test."}
 {"instruction": "Swap the case of all letters in the following text: \"This is just a test. Just a test.\"", "output": "tHIS IS JUST A TEST. jUST A TEST."}
-{"instruction": "Change each letter to alternate case starting with lowercase, shuffle the words, and then reverse the string: \"This is just a test. Just a test.\"", "output": ".TsEt sIhT TsUj .TsEt a sI A TsUj"}
+{"instruction": "Change each letter to alternate case starting with lowercase, shuffle the words, and then reverse the string: \"This is just a test. Just a test.\"", "output": ".TsEt sI TsUj a tSuJ .tSeT SiHt a"}
 {"instruction": "Double each letter in the text and then reverse the entire string: \"This is just a test. Just a test.\"", "output": "..ttsseett  aa  ttssuuJJ  ..ttsseett  aa  ttssuujj  ssii  ssiihhTT"}
 {"instruction": "Encode each word in the text as its ASCII value, separated by dashes, then reverse the order of these codes: \"This is just a test. Just a test.\"", "output": "64-611-511-101-611-79-611-511-711-47-64-611-511-101-611-79-611-511-711-601-511-501-511-501-401-48"}
 {"instruction": "Extract the initials of each word, concatenate them, and reverse the string: \"This is just a test. Just a test.\"", "output": "taJtajiT"}
@@ -32,25 +32,25 @@
 {"instruction": "Remove all vowels from the text, duplicate the remaining consonants, and then reverse the string: \"This is just a test. Just a test.\"", "output": "..ttsstt    ttssJJ  ..ttsstt    ttssjj  ss  sshhTT"}
 {"instruction": "Replace each word in this text with its length, then reverse the resulting string: \"This is just a test. Just a test.\"", "output": "51451424"}
 {"instruction": "Reverse the order of words and remove all spaces in this text: \"This is just a test. Just a test.\"", "output": "test.aJusttest.ajustisThis"}
-{"instruction": "Scramble the inner letters of each word, leaving the first and last letters intact, then reverse the order of the words: \"This is just a test. Just a test.\"", "output": ".stet a tsuJ .etst a tusj si shiT"}
+{"instruction": "Scramble the inner letters of each word, leaving the first and last letters intact, then reverse the order of the words: \"This is just a test. Just a test.\"", "output": ".tset a tsuJ .test a tusj si shiT"}
 {"instruction": "Add commas back into the following text at appropriate places: \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}
 {"instruction": "Vowels have been removed from the following text: \"Ths s jst  tst. Jst  tst.\". Add back the dropped vowels to restore the complete sentence.", "output": "This is just a test. Just a test."}
 {"instruction": "Add spaces back into the following text where they are missing: \"Thisisjustatest.Justatest.\"", "output": "This is just a test. Just a test."}
 {"instruction": "The words in the following text have been merged into a single block without spaces: \"Thisisjustatest.Justatest.\". Separate them back into the original sentence.", "output": "This is just a test. Just a test."}
 {"instruction": "All question marks are removed from the following: \"This is just a test. Just a test.\". Put them back into the text.", "output": "This is just a test. Just a test."}
-{"instruction": "One character in this text has been changed to another character. Identify the change and reconstruct the original sentence: \"This is just p test. Just a test.\"", "output": "This is just a test. Just a test."}
-{"instruction": "Reorder the words in the following text to form coherent sentences: \"Just This a test. test. just a is\"", "output": "This is just a test. Just a test."}
-{"instruction": "All instances of the letter 'a' have been removed from the following text: \"This is just a test. Just a test.\". Restore the complete sentence by inserting the letter 'a' back into the correct positions.", "output": "This is just a test. Just a test."}
+{"instruction": "One character in this text has been changed to another character. Identify the change and reconstruct the original sentence: \"Thiw is just a test. Just a test.\"", "output": "This is just a test. Just a test."}
+{"instruction": "Reorder the words in the following text to form coherent sentences: \"a test. is test. a Just This just\"", "output": "This is just a test. Just a test."}
+{"instruction": "All instances of the letter 'k' have been removed from the following text: \"This is just a test. Just a test.\". Restore the complete sentence by inserting the letter 'k' back into the correct positions.", "output": "This is just a test. Just a test."}
 {"instruction": "Punctuation has been removed from the following text: \"This is just a test Just a test\". Add the punctuation back into the text where it belongs.", "output": "This is just a test. Just a test."}
 {"instruction": "A word in the following sentence is scrambled: \"This is just a test. Just a test.\". Identify the scrambled word, unscramble it, and provide the correct sentence.", "output": "This is just a test. Just a test."}
-{"instruction": "Reorder the following scrambled words to form coherent sentences: \"just a test. Just is a test. This\"", "output": "This is just a test. Just a test."}
+{"instruction": "Reorder the following scrambled words to form coherent sentences: \"This test. Just a just test. is a\"", "output": "This is just a test. Just a test."}
 {"instruction": "Add a number in parentheses after each word in this text indicating its position: \"This is just a test. Just a test.\"", "output": "This (1) is (2) just (3) a (4) test. (5) Just (6) a (7) test. (8)"}
 {"instruction": "Count the number of consonants in the following text: \"This is just a test. Just a test.\"", "output": "16"}
 {"instruction": "Count the number of lowercase letters in the following text: \"This is just a test. Just a test.\"", "output": "22"}
 {"instruction": "Count the number of unique letters in the following text. Exclude numbers and special characters: \"This is just a test. Just a test.\"", "output": "8"}
 {"instruction": "Count the number of uppercase letters in the following text: \"This is just a test. Just a test.\"", "output": "2"}
 {"instruction": "Count the number of vowels in the following text: \"This is just a test. Just a test.\"", "output": "8"}
-{"instruction": "Identify all unique letters used in the following text: \"This is just a test. Just a test.\"", "output": "etia.sjuh"}
+{"instruction": "Identify all unique letters used in the following text: \"This is just a test. Just a test.\"", "output": "seit.huja"}
 {"instruction": "Identify the first letter in the following text that does not repeat. If all letters repeat, return an empty response: \"This is just a test. Just a test.\"", "output": "h"}
 {"instruction": "Find the last letter that appears more than once in the following text. If no letter repeats, return an empty response: \"This is just a test. Just a test.\"", "output": "."}
 {"instruction": "Find the first letter that appears exactly 3 times in the following text. Provide the letter. If no letter meets this condition, return an empty response: \"This is just a test. Just a test.\"", "output": ""}
@@ -81,13 +81,13 @@
 {"instruction": "Extract the first word from each sentence in the following text: \"This is just a test. Just a test.\"", "output": "This Just"}
 {"instruction": "Extract all unique words from the following text, disregarding case: \"This is just a test. Just a test.\"", "output": "this is just a test."}
 {"instruction": "Extract all vowels from the following text: \"This is just a test. Just a test.\"", "output": "iiuaeuae"}
-{"instruction": "Identify all words in this text that contain the letter 'a': \"This is just a test. Just a test.\"", "output": "a a"}
-{"instruction": "Find all words in this text that end with the letter 'a': \"This is just a test. Just a test.\"", "output": "a a"}
+{"instruction": "Identify all words in this text that contain the letter 'k': \"This is just a test. Just a test.\"", "output": ""}
+{"instruction": "Find all words in this text that end with the letter 'k': \"This is just a test. Just a test.\"", "output": ""}
 {"instruction": "Extract all words in this text that are longer than 5 letters: \"This is just a test. Just a test.\"", "output": ""}
 {"instruction": "Extract all words from the following text where the first and last letters are the same: \"This is just a test. Just a test.\"", "output": ""}
 {"instruction": "Extract all words from the following text that start with a vowel: \"This is just a test. Just a test.\"", "output": "is a a"}
 {"instruction": "Extract all words from the following text that have an even number of characters: \"This is just a test. Just a test.\"", "output": "This is just Just"}
-{"instruction": "Extract all words in this text that do not contain the letter 'a': \"This is just a test. Just a test.\"", "output": "This is just test. Just test."}
+{"instruction": "Extract all words in this text that do not contain the letter 'k': \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}
 {"instruction": "Create an acronym from the following text by taking the first letter of each word and capitalizing it: \"This is just a test. Just a test.\"", "output": "TIJATJAT"}
 {"instruction": "Make every fourth word bold in this text by using Markdown syntax: \"This is just a test. Just a test.\"", "output": "This is just **a** test. Just a **test.**"}
 {"instruction": "Capitalize all words in this text: \"This is just a test. Just a test.\"", "output": "This Is Just A Test. Just A Test."}
@@ -105,7 +105,7 @@
 {"instruction": "Double every vowel in the following text: \"This is just a test. Just a test.\"", "output": "Thiis iis juust aa teest. Juust aa teest."}
 {"instruction": "Remove all but the first and last word from this text: \"This is just a test. Just a test.\"", "output": "This test."}
 {"instruction": "Remove every other word from the following text, starting with the second word: \"This is just a test. Just a test.\"", "output": "This just test. a"}
-{"instruction": "Remove all words containing 'a' from this text: \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}
+{"instruction": "Remove all words containing 'k' from this text: \"This is just a test. Just a test.\"", "output": "This is just a test. Just a test."}
 {"instruction": "Remove all words that are shorter than 4 letters in this text: \"This is just a test. Just a test.\"", "output": "This just test. Just test."}
 {"instruction": "Replace all vowels in the following text with asterisks: \"This is just a test. Just a test.\"", "output": "Th*s *s j*st * t*st. J*st * t*st."}
 {"instruction": "Reverse the letters of each word in the following text: \"This is just a test. Just a test.\"", "output": "sihT si tsuj a .tset tsuJ a .tset"}
