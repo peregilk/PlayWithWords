@@ -13,7 +13,7 @@ tokens = {
 
 async def main():
     client = await AsyncPoeApi(cookie=tokens).create()
-    message = "Explain quantum computing in simple terms"
+    message = "Italicize every third word in this text by using Markdown syntax: \"This is just a test. Just a test.\""
     async for chunk in client.send_message(bot="gpt3_5", message=message):
         print(chunk["response"], end='', flush=True)
         
