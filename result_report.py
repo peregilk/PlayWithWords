@@ -2,10 +2,22 @@ import pandas as pd
 import argparse
 import os
 import glob
+import re
+
+def escape_markdown(text):
+    """
+    Escapes markdown special characters in text to be included in a markdown table.
+    """
+    markdown_escape_chars = ['\\', '`', '*', '_', '{', '}', '[', ']', '(', ')', '#', '+', '-', '.', '!', '|']
+    for char in markdown_escape_chars:
+        text = text.replace(char, f"\\{char}")
+    return text
 
 def format_result(value):
-    # Simply return the text as it is
-    return value if isinstance(value, str) else '-'
+    """
+    Returns the result text with markdown characters escaped.
+    """
+    return escape_markdown(value) if isinstance(value, str) else '-'
 
 def generate_markdown_results(input_json_lines_file, markdown_filename, extended_markdown_filename, testresults_dir='testresults/'):
     # Read JSON Lines file directly into a Pandas DataFrame
@@ -22,7 +34,7 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
                     result_columns.append(result_col_name)
                     df[result_col_name] = 'n/a'  # Initialize with 'n/a'
 
-    # Merge results from test result files
+    # Merge results from test result files and escape markdown special characters
     for testresult_file in glob.glob(os.path.join(testresults_dir, '*.jsonl')):
         test_df = pd.read_json(testresult_file, lines=True)
         for col in test_df.columns:
