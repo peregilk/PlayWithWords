@@ -4,16 +4,21 @@ import os
 import glob
 import re
 
-def escape_markdown(text):
+def escape_markdown(text, max_length=100):
     """
     Escapes markdown special characters in text to be included in a markdown table.
-    Converts line breaks to spaces to ensure single line output for table cells.
+    Converts line breaks to a visual indicator and truncates long texts.
     """
+    # Markdown special characters escape
     markdown_escape_chars = ['\\', '`', '*', '_', '{', '}', '[', ']', '(', ')', '#', '+', '-', '.', '!', '|']
     for char in markdown_escape_chars:
         text = text.replace(char, f"\\{char}")
-    # Replace line breaks with spaces
-    text = text.replace('\n', ' ').replace('\r', '')
+
+    # Replace line breaks with a visual indicator (e.g., ↵) and truncate if necessary
+    text = text.replace('\n', ' ↵ ').replace('\r', '')
+    if len(text) > max_length:
+        text = text[:max_length].rstrip() + '...'
+
     return text
 
 
