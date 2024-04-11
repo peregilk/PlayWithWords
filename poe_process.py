@@ -13,7 +13,11 @@ tokens = {
     'lat': lat_token
 }
 
-async def process_examples(client, training_examples, bot, output_file, prefix, start_from):
+async def process_examples(client, training_examples, bot, prefix, start_from):
+    # Format the bot name for filename compatibility and define the output file path
+    bot_formatted = bot.replace(" ", "_").replace("-", "_").lower()
+    output_file = f"testresults/{bot_formatted}.jsonl"
+
     mode = 'a' if start_from > 0 else 'w'  # Append if starting from a position other than 0
     with jsonlines.open(output_file, mode=mode) as writer:
         for example in training_examples[start_from:]:
@@ -31,10 +35,15 @@ async def process_examples(client, training_examples, bot, output_file, prefix, 
             writer.write(result)
             print(f"Processed example: {instruction}")
 
-async def main(training_file, bot, output_file, prefix):
+async def main(training_file, bot, prefix):
     client = await AsyncPoeApi(cookie=tokens).create()
 
+    # Ensure the testresults directory exists
+    os.makedirs("testresults", exist_ok=True)
+
     # Determine how many examples have already been processed
+    bot_formatted = bot.replace(" ", "_").replace("-", "_").lower()
+    output_file = f"testresults/{bot_formatted}.jsonl"
     processed_count = 0
     if os.path.exists(output_file):
         with jsonlines.open(output_file) as reader:
@@ -47,18 +56,17 @@ async def main(training_file, bot, output_file, prefix):
         training_examples = list(reader)
 
     if processed_count < len(training_examples):
-        await process_examples(client, training_examples, bot, output_file, prefix, processed_count)
+        await process_examples(client, training_examples, bot, prefix, processed_count)
     else:
         print("Output file is already completed. Nothing to be done.")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process training examples using Poe API')
-    parser.add_argument('--training_file', type=str, required=True, help='Path to the training examples file (jsonlines)')
+    parser.add_argument('--training_file', type=str, default='instruction/training_examples.jsonl', help='Path to the training examples file (jsonlines)')
     parser.add_argument('--bot', type=str, default='gpt3_5', help='Name of the bot to use')
-    parser.add_argument('--output_file', type=str, required=True, help='Path to the output file (jsonlines)')
     parser.add_argument('--prefix', type=str, default='Please answer the following question as short as possible. Just answer the question. No extra explanations or comments.', help='Prefix to add before the instruction')
 
     args = parser.parse_args()
 
-    asyncio.run(main(args.training_file, args.bot, args.output_file, args.prefix))
+    asyncio.run(main(args.training_file, args.bot, args.prefix))
 
