@@ -2,7 +2,6 @@ import pandas as pd
 import argparse
 import os
 import glob
-import re
 
 def escape_markdown(text, max_length=100):
     """
@@ -21,7 +20,6 @@ def escape_markdown(text, max_length=100):
 
     return text
 
-
 def format_result(value):
     """
     Returns the result text with markdown characters escaped.
@@ -34,24 +32,20 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
 
     # Initialize all potential result columns with 'n/a' to ensure consistency
     result_columns = []
+    output_value = ''  # Placeholder for the 'output' column value
+
+    # Load output value from the first test result file and initialize result columns
     for testresult_file in glob.glob(os.path.join(testresults_dir, '*.jsonl')):
         test_df = pd.read_json(testresult_file, lines=True)
+        if 'output' in test_df.columns and output_value == '':
+            output_value = test_df['output'][0]
         for col in test_df.columns:
             if col.startswith('result_'):
                 result_col_name = col.replace('result_', '')
                 if result_col_name not in result_columns:
                     result_columns.append(result_col_name)
                     df[result_col_name] = 'n/a'  # Initialize with 'n/a'
-
-    # Merge results from test result files and escape markdown special characters
-    for testresult_file in glob.glob(os.path.join(testresults_dir, '*.jsonl')):
-        test_df = pd.read_json(testresult_file, lines=True)
-        for col in test_df.columns:
-            if col.startswith('result_'):
-                result_col_name = col.replace('result_', '')
-                for index, row in test_df.iterrows():
-                    if index < len(df) and col in row:
-                        df.at[index, result_col_name] = format_result(row[col])
+    df['output'] = output_value  # Set the 'output' column for all rows
 
     # Ensure 'task group' column exists for sorting
     if 'task group' not in df.columns:
@@ -61,10 +55,11 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
     sorted_df = df.sort_values(by=['task group', 'task']).reset_index(drop=True)
     sorted_df['#'] = sorted_df.groupby('task group').cumcount() + 1
 
-    # Remove duplicates and select columns for Markdown tables
-    markdown_cols = ['#', 'instruction'] + result_columns
-    extended_cols = ['#', 'instruction', 'task', 'code', 'target'] + result_columns
+    # Define columns for Markdown tables, placing 'output' after 'instruction'
+    markdown_cols = ['#', 'instruction', 'output'] + result_columns
+    extended_cols = ['#', 'instruction', 'output', 'task', 'code', 'target'] + result_columns
 
+    # Generate Markdown strings
     markdown_string = f"[View extended tasks](./{extended_markdown_filename})\n\n"
     extended_markdown_string = f"[View basic tasks](./{markdown_filename})\n\n"
 
@@ -75,6 +70,7 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
         extended_markdown_string += f"## {name}\n\n"
         extended_markdown_string += group[extended_cols].to_markdown(index=False) + "\n\n"
 
+    # Save Markdown files
     with open(markdown_filename, 'w') as file:
         file.write(markdown_string)
     print(f"Saved simplified report to {markdown_filename}")
