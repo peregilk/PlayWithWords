@@ -12,6 +12,14 @@ tokens = {
     'lat': lat_token
 }
 
+def standardize_spacing(text):
+    """
+    Ensures there is exactly one space before punctuation marks in the given text.
+    """
+    pattern = re.compile(r'\s*([,.:;!?])')
+    return re.sub(pattern, r' \1', text)
+
+
 def process_examples(client, training_examples, bot, prefix, start_from):
     # Format the bot name for filename compatibility and define the output file path
     bot_formatted = bot.replace(" ", "_").replace("-", "_").lower()
@@ -36,7 +44,7 @@ def process_examples(client, training_examples, bot, prefix, start_from):
             result = {
                 'input': example,
                 'result_' + bot: response,
-                'status_' + bot: response.strip() == expected_output.strip()
+                'status_' + bot: standardize_spacing(response.strip()) == standardize_spacing(expected_output.strip())
             }
             writer.write(result)
             print(f"Processed example: {instruction}")
