@@ -1,8 +1,7 @@
 import os
-import asyncio
 import jsonlines
 import argparse
-from poe_api_wrapper import AsyncPoeApi
+from poe_api_wrapper import PoeApi
 
 # Reading environment variables
 b_token = os.getenv('B_TOKEN')
@@ -13,7 +12,7 @@ tokens = {
     'lat': lat_token
 }
 
-async def process_examples(client, training_examples, bot, prefix, start_from):
+def process_examples(client, training_examples, bot, prefix, start_from):
     # Format the bot name for filename compatibility and define the output file path
     bot_formatted = bot.replace(" ", "_").replace("-", "_").lower()
     output_file = f"testresults/{bot_formatted}.jsonl"
@@ -24,9 +23,16 @@ async def process_examples(client, training_examples, bot, prefix, start_from):
             instruction = example['instruction']
             expected_output = example.get('output', '')
             message = f"{prefix}\n\n{instruction}"
-            response = ''
-            async for chunk in client.send_message(bot=bot, message=message):
+            
+            # Initialize response aggregation variable
+            response = ""
+            chat_code = None
+            for chunk in client.send_message(bot=bot, message=message):
                 response += chunk["response"]
+                # Assuming chatCode can be found in the first chunk
+                if not chat_code:
+                    chat_code = chunk.get("chatCode")
+
             result = {
                 'input': example,
                 'result_' + bot: response,
@@ -34,9 +40,16 @@ async def process_examples(client, training_examples, bot, prefix, start_from):
             }
             writer.write(result)
             print(f"Processed example: {instruction}")
+            print(f"({response.strip() == expected_output.strip()})  Expected:\"{expected_output.strip()}\" - Result:\"{response.strip()}\" \n")
 
-async def main(training_file, bot, prefix):
-    client = await AsyncPoeApi(cookie=tokens).create()
+            # After processing each example, delete the chat thread if a chat code was captured
+            if chat_code:
+                client.delete_chat(bot, chatCode=chat_code)
+                print(f"Deleted chat thread for example: {instruction}")
+
+
+def main(training_file, bot, prefix):
+    client = PoeApi(cookie=tokens)
 
     # Ensure the testresults directory exists
     os.makedirs("testresults", exist_ok=True)
@@ -56,7 +69,7 @@ async def main(training_file, bot, prefix):
         training_examples = list(reader)
 
     if processed_count < len(training_examples):
-        await process_examples(client, training_examples, bot, prefix, processed_count)
+        process_examples(client, training_examples, bot, prefix, processed_count)
     else:
         print("Output file is already completed. Nothing to be done.")
 
@@ -68,5 +81,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    asyncio.run(main(args.training_file, args.bot, args.prefix))
+    main(args.training_file, args.bot, args.prefix)
 
