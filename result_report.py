@@ -7,11 +7,15 @@ import re
 def escape_markdown(text):
     """
     Escapes markdown special characters in text to be included in a markdown table.
+    Converts line breaks to spaces to ensure single line output for table cells.
     """
     markdown_escape_chars = ['\\', '`', '*', '_', '{', '}', '[', ']', '(', ')', '#', '+', '-', '.', '!', '|']
     for char in markdown_escape_chars:
         text = text.replace(char, f"\\{char}")
+    # Replace line breaks with spaces
+    text = text.replace('\n', ' ').replace('\r', '')
     return text
+
 
 def format_result(value):
     """
