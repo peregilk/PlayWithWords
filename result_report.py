@@ -3,38 +3,34 @@ import argparse
 import os
 import glob
 
-def format_status(value):
-    if value is True:
-        return "🟢"
-    elif value is False:
-        return "🔴"
-    else:
-        return "-"  # Handles 'n/a' and any other non-boolean value
+def format_result(value):
+    # Simply return the text as it is
+    return value if isinstance(value, str) else '-'
 
-def generate_markdown_tables(input_json_lines_file, markdown_filename, extended_markdown_filename, testresults_dir='testresults/'):
+def generate_markdown_results(input_json_lines_file, markdown_filename, extended_markdown_filename, testresults_dir='testresults/'):
     # Read JSON Lines file directly into a Pandas DataFrame
     df = pd.read_json(input_json_lines_file, lines=True)
 
-    # Initialize all potential status columns with 'n/a' to ensure consistency
-    status_columns = []
+    # Initialize all potential result columns with 'n/a' to ensure consistency
+    result_columns = []
     for testresult_file in glob.glob(os.path.join(testresults_dir, '*.jsonl')):
         test_df = pd.read_json(testresult_file, lines=True)
         for col in test_df.columns:
-            if col.startswith('status_'):
-                status_col_name = col.replace('status_', '')
-                if status_col_name not in status_columns:
-                    status_columns.append(status_col_name)
-                    df[status_col_name] = 'n/a'  # Initialize with 'n/a'
+            if col.startswith('result_'):
+                result_col_name = col.replace('result_', '')
+                if result_col_name not in result_columns:
+                    result_columns.append(result_col_name)
+                    df[result_col_name] = 'n/a'  # Initialize with 'n/a'
 
-    # Merge status from test result files and format values
+    # Merge results from test result files
     for testresult_file in glob.glob(os.path.join(testresults_dir, '*.jsonl')):
         test_df = pd.read_json(testresult_file, lines=True)
         for col in test_df.columns:
-            if col.startswith('status_'):
-                status_col_name = col.replace('status_', '')
+            if col.startswith('result_'):
+                result_col_name = col.replace('result_', '')
                 for index, row in test_df.iterrows():
                     if index < len(df) and col in row:
-                        df.at[index, status_col_name] = format_status(row[col])
+                        df.at[index, result_col_name] = format_result(row[col])
 
     # Ensure 'task group' column exists for sorting
     if 'task group' not in df.columns:
@@ -45,8 +41,8 @@ def generate_markdown_tables(input_json_lines_file, markdown_filename, extended_
     sorted_df['#'] = sorted_df.groupby('task group').cumcount() + 1
 
     # Remove duplicates and select columns for Markdown tables
-    markdown_cols = ['#', 'instruction'] + status_columns
-    extended_cols = ['#', 'instruction', 'task', 'code', 'target'] + status_columns
+    markdown_cols = ['#', 'instruction'] + result_columns
+    extended_cols = ['#', 'instruction', 'task', 'code', 'target'] + result_columns
 
     markdown_string = f"[View extended tasks](./{extended_markdown_filename})\n\n"
     extended_markdown_string = f"[View basic tasks](./{markdown_filename})\n\n"
@@ -67,15 +63,15 @@ def generate_markdown_tables(input_json_lines_file, markdown_filename, extended_
     print(f"Saved extended report to {extended_markdown_filename}")
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate Markdown tables from JSON Lines tasks.')
+    parser = argparse.ArgumentParser(description='Generate Markdown results from JSON Lines tasks.')
     parser.add_argument('--input_json_lines_file', type=str, default='templates/samples.jsonl', help='Path to the input JSON Lines file.')
     parser.add_argument('--testresults_dir', type=str, default='testresults/', help='Directory containing test results JSON Lines files.')
 
-    markdown_filename = 'tasks.md'
-    extended_markdown_filename = 'tasks_extended.md'
+    markdown_filename = 'results.md'
+    extended_markdown_filename = 'results_extended.md'
 
     args = parser.parse_args()
-    generate_markdown_tables(args.input_json_lines_file, markdown_filename, extended_markdown_filename, args.testresults_dir)
+    generate_markdown_results(args.input_json_lines_file, markdown_filename, extended_markdown_filename, args.testresults_dir)
 
 if __name__ == "__main__":
     main()
