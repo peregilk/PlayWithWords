@@ -27,25 +27,25 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
     # Read JSON Lines file directly into a Pandas DataFrame
     df = pd.read_json(input_json_lines_file, lines=True)
     
-    # Initialize 'output' column with placeholder
-    df['output'] = 'n/a'
+    # Initialize 'output' column
+    df['output'] = None
     
     # Process each test result file
     for testresult_file in glob.glob(os.path.join(testresults_dir, '*.jsonl')):
         test_df = pd.read_json(testresult_file, lines=True)
-        if 'input' in test_df.columns and df['output'].equals(pd.Series(['n/a'] * len(df))):
-            # Assuming 'output' field is consistent across all test result files
-            initial_output_value = test_df.iloc[0]['input'].get('output', 'n/a')
-            df['output'] = format_result(initial_output_value)
         
-        # Update df with results from test_df for result columns
-        for col in test_df.columns:
-            if col.startswith('result_'):
-                if col not in df.columns:
-                    df[col] = 'n/a'  # Initialize column if not present
-                # Apply formatting and update DataFrame directly
-                for index, row in test_df.iterrows():
-                    if col in row and index < len(df):
+        for index, row in test_df.iterrows():
+            if 'input' in row and 'output' in row['input']:
+                # Update the 'output' for the corresponding row in the main DataFrame
+                if index < len(df):
+                    df.at[index, 'output'] = format_result(row['input']['output'])
+        
+            # Update df with results from test_df for result columns
+            for col in test_df.columns:
+                if col.startswith('result_'):
+                    if col not in df.columns:
+                        df[col] = 'n/a'  # Initialize column if not present
+                    if index < len(df):
                         df.at[index, col] = format_result(row[col])
 
     if 'task group' not in df.columns:
@@ -55,7 +55,7 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
     sorted_df['#'] = sorted_df.groupby('task group').cumcount() + 1
 
     markdown_cols = ['#', 'instruction', 'output'] + [col for col in sorted_df.columns if col.startswith('result_')]
-    extended_cols = ['#', 'instruction', 'task', 'code', 'target', 'output'] + [col for col in sorted_df.columns if col.startswith('result_')]
+    extended_cols = ['#', 'instruction', 'output', 'task', 'code', 'target'] + [col for col in sorted_df.columns if col.startswith('result_')]
 
     markdown_string = f"[View extended tasks](./{extended_markdown_filename})\n\n"
     extended_markdown_string = f"[View basic tasks](./{markdown_filename})\n\n"
