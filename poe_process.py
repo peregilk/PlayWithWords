@@ -2,6 +2,7 @@ import os
 import jsonlines
 import argparse
 from poe_api_wrapper import PoeApi
+import re
 
 # Reading environment variables
 b_token = os.getenv('B_TOKEN')
@@ -14,10 +15,13 @@ tokens = {
 
 def standardize_spacing(text):
     """
-    Ensures there is exactly one space before punctuation marks in the given text.
+    Ensures there is exactly one space before and no unnecessary spaces after certain punctuation marks in the given text.
+    This targets ., !, and ? specifically, which are common in test comparisons.
     """
-    pattern = re.compile(r'\s*([,.:;!?])')
-    return re.sub(pattern, r' \1', text)
+    text = re.sub(r'\s*([.!?])', r' \1', text)  # Put exactly one space before punctuation
+    text = re.sub(r'([.!?])\s+', r'\1 ', text)  # Remove multiple spaces after punctuation, leave one
+    return text.strip()  # Strip whitespace from the ends for a clean comparison
+
 
 
 def process_examples(client, training_examples, bot, prefix, start_from):
