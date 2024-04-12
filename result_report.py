@@ -23,6 +23,15 @@ def format_result(value):
     """
     return escape_markdown(value) if isinstance(value, str) else value
 
+def format_status(value):
+    if value is True:
+        return "🟢"
+    elif value is False:
+        return "🔴"
+    else:
+        return "-"  # Handles 'n/a' and any other non-boolean value
+
+
 def generate_markdown_results(input_json_lines_file, markdown_filename, extended_markdown_filename, testresults_dir='testresults/'):
     # Read JSON Lines file directly into a Pandas DataFrame
     df = pd.read_json(input_json_lines_file, lines=True)
@@ -39,14 +48,19 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
                 # Update the 'output' for the corresponding row in the main DataFrame
                 if index < len(df):
                     df.at[index, 'output'] = format_result(row['input']['output'])
-        
-            # Update df with results from test_df for result columns
+    
             for col in test_df.columns:
                 if col.startswith('result_'):
+                    status_col = col.replace('result_', 'status_')
                     if col not in df.columns:
                         df[col] = 'n/a'  # Initialize column if not present
+                    
+                    # Check if index is within the bounds of df
                     if index < len(df):
-                        df.at[index, col] = format_result(row[col])
+                        result_value = test_df.at[index, col] if col in test_df.columns else 'n/a'
+                        status_value = test_df.at[index, status_col] if status_col in test_df.columns else 'n/a'
+                        df.at[index, col] = f"{format_status(status_value)} {format_result(result_value)}"
+
 
     if 'task group' not in df.columns:
         raise ValueError("DataFrame must contain a 'task group' column for sorting.")
@@ -54,7 +68,7 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
     sorted_df = df.sort_values(by=['task group', 'task']).reset_index(drop=True)
     sorted_df['#'] = sorted_df.groupby('task group').cumcount() + 1
 
-    markdown_cols = ['#', 'instruction', 'output'] + [col for col in sorted_df.columns if (col.startswith('result_') or col.startswith('status_'))]
+    markdown_cols = ['#', 'instruction', 'output'] + [col for col in sorted_df.columns if col.startswith('result_')]
     extended_cols = ['#', 'target','instruction', 'output', 'task', 'code', 'output'] + [col for col in sorted_df.columns if col.startswith('result_')]
 
     markdown_string = f"[View extended tasks](./{extended_markdown_filename})\n\n"
