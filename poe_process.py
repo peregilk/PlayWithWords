@@ -89,7 +89,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Process training examples using Poe API')
     parser.add_argument('--training_file', type=str, default='instruction/training_examples.jsonl', help='Path to the training examples file (jsonlines)')
     parser.add_argument('--bot', type=str, default='gpt3_5', help='Name of the bot to use')
-    parser.add_argument('--prefix', type=str, default='Please answer the following question as short as possible. Just answer the question. No extra explanations or comments.', help='Prefix to add before the instruction')
+    parser.add_argument('--prefix', type=str, default='Please answer the following question as short as possible. Just answer the question. No extra explanations or comments. The answer should appear as clear text with no quotes or similar.', help='Prefix to add before the instruction')
 
     args = parser.parse_args()
 
