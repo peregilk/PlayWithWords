@@ -24,12 +24,12 @@ def format_result(value):
     return escape_markdown(value) if isinstance(value, str) else value
 
 def format_status(value):
-    if value is True:
+    if value == "True":
         return "🟢"
-    elif value is False:
+    elif value == "False":
         return "🔴"
     else:
-        return value  # Handles 'n/a' and any other non-boolean value
+        return "-"  # Handles 'n/a' and any other non-boolean value
 
 
 def generate_markdown_results(input_json_lines_file, markdown_filename, extended_markdown_filename, testresults_dir='testresults/'):
