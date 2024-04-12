@@ -54,7 +54,7 @@ def generate_markdown_results(input_json_lines_file, markdown_filename, extended
     sorted_df = df.sort_values(by=['task group', 'task']).reset_index(drop=True)
     sorted_df['#'] = sorted_df.groupby('task group').cumcount() + 1
 
-    markdown_cols = ['#', 'instruction', 'output'] + [col for col in sorted_df.columns if col.startswith('result_') or col.startswith('status_')]
+    markdown_cols = ['#', 'instruction', 'output'] + [col for col in sorted_df.columns if (col.startswith('result_') or col.startswith('status_'))]
     extended_cols = ['#', 'target','instruction', 'output', 'task', 'code', 'output'] + [col for col in sorted_df.columns if col.startswith('result_')]
 
     markdown_string = f"[View extended tasks](./{extended_markdown_filename})\n\n"
