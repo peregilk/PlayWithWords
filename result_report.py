@@ -29,7 +29,7 @@ def format_status(value):
     elif value == "False":
         return "🔴"
     else:
-        return "-"  # Handles 'n/a' and any other non-boolean value
+        return value  # Handles 'n/a' and any other non-boolean value
 
 
 def generate_markdown_results(input_json_lines_file, markdown_filename, extended_markdown_filename, testresults_dir='testresults/'):
