@@ -52,7 +52,7 @@ def process_examples(client, training_examples, bot, prefix, start_from):
             }
             writer.write(result)
             print(f"Processed example: {instruction}")
-            print(f"({response.strip() == expected_output.strip()})  Expected:\"{expected_output.strip()}\" - Result:\"{response.strip()}\" \n")
+            print(f"({standardize_spacing(response.strip()) == standardize_spacing(expected_output.strip())})  Expected:\"{standardize_spacing(expected_output.strip())}\" - Result:\"{standardize_spacing(response.strip())}\" \n")
 
             # After processing each example, delete the chat thread if a chat code was captured
             if chat_code:
