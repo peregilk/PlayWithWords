@@ -10,47 +10,47 @@
 {"instruction": "Translate the following text into Igpay Atinlay (Pig Latin with 'ay' after each word): \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Todayay isay Tuesday.ay Today,ay theay weatheray isay sunny.ay"}
 {"instruction": "Reverse the Caesar cipher with a shift of 5 for the following text: \"Ttifd nx Tzjxifd. Ttifd, ymj bjfymjw nx xzssd.\"", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "Shift all vowels aeiou forward one in the order aeiou (circularly, so 'u' becomes 'a'). Return the transformed string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Tudey os Taisdey. Tudey, thi wiethir os sanny."}
-{"instruction": "Remove all but the first and last character of each word in this text. Keep punctuation: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Ty   is   Ty .  Ty ,  te   wr   is   sy ."}
+{"instruction": "Remove all but the first and last character of each word in this text. Keep punctuation: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Ty is Ty. Ty, te wr is sy."}
 {"instruction": "Remove the last letter from each word in this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Toda i Tuesda. Toda, th weathe i sunn."}
 {"instruction": "Remove all punctuation from the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today is Tuesday Today the weather is sunny"}
 {"instruction": "Remove all spaces in this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "TodayisTuesday.Today,theweatherissunny."}
-{"instruction": "Replace all instances of the character 'u' in the following text with 'z'. Keep the casing of the replaced characters: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today is Tzesday. Today, the weather is sznny."}
+{"instruction": "Replace all instances of the character 'y' in the following text with 'k'. Keep the casing of the replaced characters: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Todak is Tuesdak. Todak, the weather is sunnk."}
 {"instruction": "Replace all consonants in the following text with asterisks (*). y is not considered a consonant: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "*o*ay i* *ue**ay. *o*ay, **e *ea**e* i* *u**y."}
 {"instruction": "Replace all spaces in the following text with underscores: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today_is_Tuesday._Today,_the_weather_is_sunny."}
-{"instruction": "Replace all vowels in the following text with asterisks (*): \"Today is Tuesday. Today, the weather is sunny.\"", "output": "T*d*y *s T**sd*y. T*d*y, th* w**th*r *s s*nny."}
-{"instruction": "Reverse the character order in every third word of the following text, starting with the first word: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today is .yadseuT Today, the rehtaew is sunny."}
-{"instruction": "Reverse character order in every other word in this text, starting with the first word: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "yadoT is .yadseuT Today, eht weather si sunny."}
+{"instruction": "Replace all vowels in the following text with asterisks (*). The letter y should not be considered a vowel: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "T*d*y *s T**sd*y. T*d*y, th* w**th*r *s s*nny."}
+{"instruction": "Remove all punctuation and reverse the character order in every third word of the following text, starting with the first word: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "yadoT is Tuesday yadoT the weather si sunny"}
+{"instruction": "Remove all punctuation and reverse character order in every other word in this text, starting with the first word: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "yadoT is yadseuT Today eht weather si sunny"}
 {"instruction": "Swap the case of all letters in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "tODAY IS tUESDAY. tODAY, THE WEATHER IS SUNNY."}
-{"instruction": "Change each letter to alternate case starting with lowercase, shuffle the words, and then reverse the string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": ".yNnUs sI ReHtAeW Si ,YaDoT YaDoT EhT .yAdSeUt"}
-{"instruction": "Double each letter in the text and then reverse the entire string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "..yynnnnuuss  ssii  rreehhttaaeeww  eehhtt  ,,yyaaddooTT  ..yyaaddsseeuuTT  ssii  yyaaddooTT"}
+{"instruction": "Change each letter to alternate case starting with lowercase, and then reverse the string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": ".yNnUs sI ReHtAeW EhT ,yAdOt .YaDsEuT Si yAdOt"}
+{"instruction": "Double each character in the text and then reverse the entire string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "..yynnnnuuss  ssii  rreehhttaaeeww  eehhtt  ,,yyaaddooTT  ..yyaaddsseeuuTT  ssii  yyaaddooTT"}
 {"instruction": "Encode each word in the text as its ASCII value, separated by dashes, then reverse the order of these codes: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "64-121-011-011-711-511-511-501-411-101-401-611-79-101-911-101-401-611-44-121-79-001-111-48-64-121-79-001-511-101-711-48-511-501-121-79-001-111-48"}
 {"instruction": "Extract the initials of each word, concatenate them, and reverse the string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "siwtTTiT"}
 {"instruction": "For each word in the text, interleave it with its reverse and then reverse the entire sentence order: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "s.uynnnnyu.s issi wreeahtthaeerw tehhet T,oydaadyo,T T.uyeasddsaeyu.T issi TyoaddaoyT"}
 {"instruction": "Remove all but the first and last word of each sentence, then reverse the order of the remaining sentences in this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today,sunny. TodayTuesday"}
 {"instruction": "Remove all but the first letter of each word, then reverse the order of the words in this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "s i w t T T i T"}
-{"instruction": "Remove all but the last letter of each word, then reverse the resulting string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": ".sre,.sy"}
-{"instruction": "Remove all vowels from the text, duplicate the remaining consonants, and then reverse the string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "..yynnnnss  ss  rrhhttww  hhtt  ,,yyddTT  ..yyddssTT  ss  yyddTT"}
-{"instruction": "Replace each word in this text with its length, then reverse the resulting string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "62736825"}
+{"instruction": "Remove punctuation and all but the last letter of each word, then reverse the resulting string: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "ysreyysy"}
+{"instruction": "Remove punctuation and all vowels from the text. The letter y is not considered a vowel. Then duplicate the remaining consonants: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "yynnnnssssrrhhttwwhhttyyddTTyyddssTTssyyddTT"}
+{"instruction": "Remove punctuation and replace each word in this text with its length. Use comma between each number: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "5,2,7,5,3,7,2,5"}
 {"instruction": "Reverse the order of words and remove all spaces in this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "sunny.isweathertheToday,Tuesday.isToday"}
-{"instruction": "Scramble the inner letters of each word, leaving the first and last letters intact, then reverse the order of the words: \"Today is Tuesday. Today, the weather is sunny.\"", "output": ".unyns si reteahw eht ,oyadT .adsyeuT si yodaT"}
+{"instruction": "Scramble the inner letters of each word, leaving the first and last letters intact, then reverse the order of the words: \"Today is Tuesday. Today, the weather is sunny.\"", "output": ".nnuys si retehaw eht ,adoyT .eysduaT si ydoaT"}
 {"instruction": "Add commas back into the following text at appropriate places: \"Today is Tuesday. Today the weather is sunny.\"", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "Vowels have been removed from the following text: \"Tdy s Tsdy. Tdy, th wthr s snny.\". Add back the dropped vowels to restore the complete sentence.", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "Add spaces back into the following text where they are missing: \"TodayisTuesday.Today,theweatherissunny.\"", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "The words in the following text have been merged into a single block without spaces: \"TodayisTuesday.Today,theweatherissunny.\". Separate them back into the original sentence.", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "All question marks are removed from the following: \"Today is Tuesday. Today, the weather is sunny.\". Put them back into the text.", "output": "Today is Tuesday. Today, the weather is sunny."}
-{"instruction": "One character in this text has been changed to another character. Identify the change and reconstruct the original sentence: \"Taday is Tuesday. Today, the weather is sunny.\"", "output": "Today is Tuesday. Today, the weather is sunny."}
-{"instruction": "Reorder the words in the following text to form coherent sentences: \"sunny. Tuesday. is Today, Today is the weather\"", "output": "Today is Tuesday. Today, the weather is sunny."}
-{"instruction": "All instances of the letter 'u' have been removed from the following text: \"Today is Tuesday. Today, the weather is sunny.\". Restore the complete sentence by inserting the letter 'u' back into the correct positions.", "output": "Today is Tuesday. Today, the weather is sunny."}
+{"instruction": "One character in this text has been changed to another character. Identify the change and reconstruct the original sentence: \"poday is Tuesday. Today, the weather is sunny.\"", "output": "Today is Tuesday. Today, the weather is sunny."}
+{"instruction": "Reorder the words in the following text to form coherent sentences: \"the sunny. Tuesday. is Today, weather Today is\"", "output": "Today is Tuesday. Today, the weather is sunny."}
+{"instruction": "All instances of the letter 'y' have been removed from the following text: \"Today is Tuesday. Today, the weather is sunny.\". Restore the complete sentence by inserting the letter 'y' back into the correct positions.", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "Punctuation has been removed from the following text: \"Today is Tuesday Today the weather is sunny\". Add the punctuation back into the text where it belongs.", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "A word in the following sentence is scrambled: \"Today is Tuesday. Today, the weather is sunny.\". Identify the scrambled word, unscramble it, and provide the correct sentence.", "output": "Today is Tuesday. Today, the weather is sunny."}
-{"instruction": "Reorder the following scrambled words to form coherent sentences: \"the Tuesday. is Today, weather sunny. Today is\"", "output": "Today is Tuesday. Today, the weather is sunny."}
-{"instruction": "Add a number in parentheses after each word in this text indicating its position: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today (1) is (2) Tuesday. (3) Today, (4) the (5) weather (6) is (7) sunny. (8)"}
+{"instruction": "Reorder the following scrambled words to form coherent sentences: \"weather Today is is sunny. the Tuesday. Today,\"", "output": "Today is Tuesday. Today, the weather is sunny."}
+{"instruction": "Add a number in parentheses after each word in this text indicating its position: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today (1) is (2) Tuesday (3) Today (4) the (5) weather (6) is (7) sunny (8)"}
 {"instruction": "Count the number of consonants in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "22"}
 {"instruction": "Count the number of lowercase letters in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "33"}
 {"instruction": "Count the number of unique letters in the following text. Exclude numbers and special characters: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "13"}
 {"instruction": "Count the number of uppercase letters in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "3"}
 {"instruction": "Count the number of vowels in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "14"}
-{"instruction": "Identify all unique letters used in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "d,wrhaousy.tein"}
+{"instruction": "Identify all unique letters used in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "uo.rtie,anyhwds"}
 {"instruction": "Identify the first letter in the following text that does not repeat. If all letters repeat, return an empty response: \"Today is Tuesday. Today, the weather is sunny.\"", "output": ","}
 {"instruction": "Find the last letter that appears more than once in the following text. If no letter repeats, return an empty response: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "."}
 {"instruction": "Find the first letter that appears exactly 3 times in the following text. Provide the letter. If no letter meets this condition, return an empty response: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "d"}
@@ -81,13 +81,13 @@
 {"instruction": "Extract the first word from each sentence in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today Today,"}
 {"instruction": "Extract all unique words from the following text, disregarding case: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "today is tuesday. today, the weather sunny."}
 {"instruction": "Extract all vowels from the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "oaiueaoaeeaeiu"}
-{"instruction": "Identify all words in this text that contain the letter 'u': \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Tuesday. sunny."}
-{"instruction": "Find all words in this text that end with the letter 'u': \"Today is Tuesday. Today, the weather is sunny.\"", "output": ""}
+{"instruction": "Identify all words in this text that contain the letter 'y': \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today Tuesday. Today, sunny."}
+{"instruction": "Find all words in this text that end with the letter 'y': \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today"}
 {"instruction": "Extract all words in this text that are longer than 5 letters: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Tuesday. Today, weather sunny."}
 {"instruction": "Extract all words from the following text where the first and last letters are the same: \"Today is Tuesday. Today, the weather is sunny.\"", "output": ""}
 {"instruction": "Extract all words from the following text that start with a vowel: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "is is"}
 {"instruction": "Extract all words from the following text that have an even number of characters: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "is Tuesday. Today, is sunny."}
-{"instruction": "Extract all words in this text that do not contain the letter 'u': \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today is Today, the weather is"}
+{"instruction": "Extract all words in this text that do not contain the letter 'y': \"Today is Tuesday. Today, the weather is sunny.\"", "output": "is the weather is"}
 {"instruction": "Create an acronym from the following text by taking the first letter of each word and capitalizing it: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "TITTTWIS"}
 {"instruction": "Make every fourth word bold in this text by using Markdown syntax: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today is Tuesday. **Today,** the weather is **sunny.**"}
 {"instruction": "Capitalize all words in this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today Is Tuesday. Today, The Weather Is Sunny."}
@@ -105,7 +105,7 @@
 {"instruction": "Double every vowel in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Toodaay iis Tuueesdaay. Toodaay, thee weeaatheer iis suunny."}
 {"instruction": "Remove all but the first and last word from this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today sunny."}
 {"instruction": "Remove every other word from the following text, starting with the second word: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today Tuesday. the is"}
-{"instruction": "Remove all words containing 'u' from this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today is Tuesday. Today, the weather is sunny."}
+{"instruction": "Remove all words containing 'y' from this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today is Tuesday. Today, the weather is sunny."}
 {"instruction": "Remove all words that are shorter than 4 letters in this text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "Today Tuesday. Today, weather sunny."}
 {"instruction": "Replace all vowels in the following text with asterisks: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "T*d*y *s T**sd*y. T*d*y, th* w**th*r *s s*nny."}
 {"instruction": "Reverse the letters of each word in the following text: \"Today is Tuesday. Today, the weather is sunny.\"", "output": "yadoT si .yadseuT ,yadoT eht rehtaew si .ynnus"}
