@@ -4,6 +4,7 @@ import argparse
 import jsonlines
 import random
 import string
+import os
 
 # Define the letters of the English alphabet
 alphabet = list(string.ascii_lowercase)
@@ -21,6 +22,7 @@ def execute_transformation(code: str, corpus_paragraph: str, char1: str, char2: 
     # This function includes the transformation logic and returns ModifiedText.
     wrapper_code = f"""
 def transform(InputText, Char1, Char2, Char3):
+    import re
     {code}
     return ModifiedText
 """
@@ -41,8 +43,7 @@ def transform(InputText, Char1, Char2, Char3):
         # Error handling for any issues during code execution.
         raise Exception(f"Error executing transformation code: {e}")
 
-
-def generate_training_samples(text: str, json_lines_file_path: str, output_file_path: str, char1: str, char2: str, char3: str, verified_json_lines_file_path: str = None) -> None:
+def generate_training_samples(text_path: str, json_lines_file_path: str, output_file_path: str, char1: str, char2: str, char3: str, verified_json_lines_file_path: str = None) -> None:
     verified_file = jsonlines.open(verified_json_lines_file_path, mode='w') if verified_json_lines_file_path else None
 
     with jsonlines.open(output_file_path, mode='w') as output_writer:
@@ -51,9 +52,16 @@ def generate_training_samples(text: str, json_lines_file_path: str, output_file_
                 try:
                     json_line = json.loads(line)
                     try:
-                        modified_text = execute_transformation(json_line['code'], text, char1, char2, char3)
-                        instruction = json_line['instruction'].replace("{InputText}", text).replace("{ModifiedText}", modified_text).replace("{Char1}", char1).replace("{Char2}", char2).replace("{Char3}", char3)
-                        output = json_line['target'].replace("{InputText}", text).replace("{ModifiedText}", modified_text).replace("{Char1}", char1).replace("{Char2}", char2).replace("{Char3}", char3)
+                        # Use the text from the file if the text_path points to an existing file
+                        if os.path.isfile(text_path):
+                            with open(text_path, 'r') as text_file:
+                                input_text = text_file.read().rstrip('\n')
+                            
+                        else:
+                            input_text = text_path
+                        modified_text = execute_transformation(json_line['code'], input_text, char1, char2, char3)
+                        instruction = json_line['instruction'].replace("{InputText}", input_text).replace("{ModifiedText}", modified_text).replace("{Char1}", char1).replace("{Char2}", char2).replace("{Char3}", char3)
+                        output = json_line['target'].replace("{InputText}", input_text).replace("{ModifiedText}", modified_text).replace("{Char1}", char1).replace("{Char2}", char2).replace("{Char3}", char3)
 
                         training_sample = {
                             "instruction": instruction,
@@ -65,7 +73,6 @@ def generate_training_samples(text: str, json_lines_file_path: str, output_file_
                         if verified_file:
                             verified_file.write(json_line)
 
-                        #print(f"Instruction: {instruction}\nOutput: {output}\n")
                     except Exception as e:
                         print(f"Error processing transformation on line {line_number}: {e}")
                 except json.JSONDecodeError as e:
@@ -74,11 +81,14 @@ def generate_training_samples(text: str, json_lines_file_path: str, output_file_
     if verified_file:
         verified_file.close()
 
+    print(f"An example training sample is generated in {output_file_path}")
+    print("For copying to Google Sheets use:\n\tjq -r '.instruction' instruction/training_examples.jsonl|more\n\tjq -r '.output' instruction/training_examples.jsonl|more")
+
 def main():
     parser = argparse.ArgumentParser(description="Generate instruction tuning training examples.")
-    parser.add_argument("--input_text", type=str, required=True, help="Input text to transform.")
-    parser.add_argument("--json_lines_file", type=str, required=True, help="Path to the json-lines file with transformation templates.")
-    parser.add_argument("--output_file", type=str, required=True, help="Path to save the output training examples in jsonlines format.")
+    parser.add_argument("--input_text", type=str, default="templates/default_input_text.txt", help="Input text to transform. If an existing file is given, it reads the text from that file instead.")
+    parser.add_argument("--json_lines_file", type=str, default="templates/samples.jsonl", help="Path to the json-lines file with transformation templates.")
+    parser.add_argument("--output_file", type=str, default="instruction/training_examples.jsonl", help="Path to save the output training examples in jsonlines format.")
     parser.add_argument("--verified_json_lines_file", type=str, help="Path to save the verified json-lines file without any processing errors.")
 
     args = parser.parse_args()
@@ -88,4 +98,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
