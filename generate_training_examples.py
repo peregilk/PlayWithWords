@@ -5,6 +5,10 @@ import jsonlines
 import random
 import string
 import os
+import nltk
+from nltk.tokenize import sent_tokenize
+
+nltk.download('punkt')
 
 # Define the letters of the English alphabet
 alphabet = list(string.ascii_lowercase)
@@ -21,8 +25,11 @@ def execute_transformation(code: str, corpus_paragraph: str, char1: str, char2: 
     # Wrapper code to define a function that will be executed by exec.
     # This function includes the transformation logic and returns ModifiedText.
     wrapper_code = f"""
+
 def transform(InputText, Char1, Char2, Char3):
     import re
+    import nltk
+    from nltk.tokenize import sent_tokenize
     {code}
     return ModifiedText
 """
