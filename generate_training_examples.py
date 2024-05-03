@@ -89,7 +89,7 @@ def generate_training_samples(text_path: str, json_lines_file_path: str, output_
         verified_file.close()
 
     print(f"An example training sample is generated in {output_file_path}")
-    print("For copying to Google Sheets use:\n\tjq -r '.instruction' instruction/training_examples.jsonl|more\n\tjq -r '.output' instruction/training_examples.jsonl|more")
+    print(f"For copying to Google Sheets use:\n\tjq -r '.instruction' {output_file_path}|more\n\tjq -r '.output' {output_file_path}|more")
 
 def main():
     parser = argparse.ArgumentParser(description="Generate instruction tuning training examples.")
