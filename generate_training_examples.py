@@ -94,7 +94,7 @@ def generate_training_samples(text_path: str, json_lines_file_path: str, output_
 def main():
     parser = argparse.ArgumentParser(description="Generate instruction tuning training examples.")
     parser.add_argument("--input_text", type=str, default="templates/default_input_text.txt", help="Input text to transform. If an existing file is given, it reads the text from that file instead.")
-    parser.add_argument("--json_lines_file", type=str, default="templates/samples.jsonl", help="Path to the json-lines file with transformation templates.")
+    parser.add_argument("--json_lines_file", type=str, default="templates/samples_en.jsonl", help="Path to the json-lines file with transformation templates.")
     parser.add_argument("--output_file", type=str, default="instruction/training_examples.jsonl", help="Path to save the output training examples in jsonlines format.")
     parser.add_argument("--verified_json_lines_file", type=str, help="Path to save the verified json-lines file without any processing errors.")
 
