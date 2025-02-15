@@ -86,26 +86,7 @@ You can add new tasks by editing or adding new JSONL entries in the `templates/`
 
 ---
 
-## Contributing
 
-Contributions, issues, and feature requests are welcome. To contribute:
-
-1. Fork the repository.
-2. Create a new feature branch:
-   
-       git checkout -b feature/AmazingFeature
-
-3. Commit your changes:
-   
-       git commit -m "Add AmazingFeature"
-
-4. Push to your branch:
-   
-       git push origin feature/AmazingFeature
-
-5. Open a pull request.
-
----
 
 ## License
 
